@@ -34,7 +34,7 @@
         .logo-placeholder {
             width: 150px;
             height: 50px;
-            background: #5a7a8a;
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,8 +64,8 @@
             color: white;
         }
         
-        .logo-placeholder:has(img) .logo-text-small,
-        .logo-placeholder:has(img) .logo-text-large {
+        .logo-placeholder.has-image .logo-text-small,
+        .logo-placeholder.has-image .logo-text-large {
             display: none;
         }
         
@@ -477,6 +477,7 @@
     <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo-placeholder">
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
             <div class="logo-text-small">TEQUILA</div>
             <div class="logo-text-large">FILAZUL</div>
         </a>
@@ -651,6 +652,7 @@
     <!-- Footer -->
     <footer>
         <a href="index.html" class="logo-placeholder" style="margin: 0 auto 2rem; display: flex; width: 200px; height: 66px;">
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 100%; height: 100%; object-fit: contain;" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
                 <div class="logo-text-small">TEQUILA</div>
                 <div class="logo-text-large" style="font-size: 2rem;">FILAZUL</div>
