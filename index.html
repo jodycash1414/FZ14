@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILAZUL Tequila - From Our Family to Yours</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Franklin Gothic Demi Cond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 5%;
+        }
+        
+        .logo-placeholder {
+            width: 150px;
+            height: 50px;
+            background: #5a7a8a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 0.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-placeholder:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text-small {
+            font-size: 0.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.2rem;
+            color: white;
+        }
+        
+        .logo-text-large {
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:not(.logo-placeholder):after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d97832;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:not(.logo-placeholder):hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section - Full Screen with Parallax */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 30%, #f4a460 60%, #d97832 100%);
+            background-size: cover;
+            background-position: center;
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards 0.5s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+            animation: fadeInUp 1.5s ease forwards 0.7s;
+            opacity: 0;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+            animation: fadeInUp 1.5s ease forwards 0.9s;
+            opacity: 0;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: fadeInUp 1.5s ease forwards 1.1s;
+            opacity: 0;
+        }
+        
+        .hero-cta {
+            animation: fadeInUp 1.5s ease forwards 1.3s;
+            opacity: 0;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 25px;
+            position: relative;
+        }
+        
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+        
+        @keyframes scroll {
+            0% {
+                top: 10px;
+                opacity: 1;
+            }
+            100% {
+                top: 30px;
+                opacity: 0;
+            }
+        }
+        
+        /* Animated Sections */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Story Section with Image Reveal */
+        .story-section {
+            min-height: 100vh;
+            padding: 8rem 5%;
+            background: #0a0a0a;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(217, 120, 50, 0.1));
+            transform: skewX(-10deg);
+            transition: left 1.5s ease;
+        }
+        
+        .story-section.visible::before {
+            left: 100%;
+        }
+        
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .story-content h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #f4a460, #d97832);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .story-content p {
+            font-size: 1.4rem;
+            line-height: 2;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .story-content .highlight {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #f4a460;
+            font-weight: 500;
+            display: block;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        /* Product Showcase with Split Screen */
+        .product-showcase {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: white;
+            position: relative;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            min-height: 100vh;
+        }
+        
+        .product-image-side {
+            background: linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image-side::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L55 30 L50 50 L45 30 Z" fill="rgba(255,255,255,0.03)" /></svg>') repeat;
+        }
+        
+        .bottle-display {
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(135deg, #f4a460 0%, #d97832 30%, #5a7ba6 60%, #1a4d6d 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 1.5s ease;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .product-showcase.visible .bottle-display {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .product-info-side {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #f9f9f9;
+        }
+        
+        .product-info-side h3 {
+            font-size: 3.5rem;
+            color: #1a4d6d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s ease 0.3s;
+        }
+        
+        .product-showcase.visible .product-info-side h3 {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .product-tagline {
+            font-size: 1.5rem;
+            color: #d97832;
+            margin-bottom: 2rem;
+            font-style: italic;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s ease 0.5s;
+        }
+        
+        .product-showcase.visible .product-tagline {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .product-description {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 2rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s ease 0.7s;
+        }
+        
+        .product-showcase.visible .product-description {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s ease 0.9s;
+        }
+        
+        .product-showcase.visible .product-specs {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .spec {
+            padding: 1.5rem;
+            background: white;
+            border-left: 4px solid #d97832;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .spec-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 1px;
+        }
+        
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a4d6d;
+            margin-top: 0.3rem;
+        }
+        
+        /* Brand Pillars - Staggered Animation */
+        .pillars-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, #1a4d6d 0%, #2c5f7d 100%);
+            color: white;
+        }
+        
+        .pillars-section h2 {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .pillar {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .pillars-section.visible .pillar:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .pillars-section.visible .pillar:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        .pillars-section.visible .pillar:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+        
+        .pillars-section.visible .pillar:nth-child(4) {
+            transition-delay: 0.7s;
+        }
+        
+        .pillars-section.visible .pillar {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .pillar:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #d97832;
+        }
+        
+        .pillar-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #d97832, #f4a460);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .pillar h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pillar p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        /* CTA Section with Reveal */
+        .cta-section {
+            min-height: 60vh;
+            background: #0a0a0a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(217, 120, 50, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+        
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .cta-content p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(135deg, #d97832, #f4a460);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(217, 120, 50, 0.4);
+        }
+        
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1.5rem;
+        }
+        
+        .cta-button.secondary::before {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #f4a460;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: #f4a460;
+            transform: translateY(-2px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon:hover {
+            background: #d97832;
+            transform: translateY(-5px) rotate(360deg);
+            border-color: #d97832;
+        }
+        
+        .legal {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image-side {
+                min-height: 60vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-info-side {
+                padding: 3rem 2rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .story-content h2,
+            .pillars-section h2,
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <a href="index.html" class="logo-placeholder">
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" onerror="this.style.display='none'">
+            <div class="logo-text-small">TEQUILA</div>
+            <div class="logo-text-large">FILAZUL</div>
+        </a>
+        <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="tequila-blanco.html">Our Tequila</a></li>
+            <li><a href="where-to-buy.html">Where to Buy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-content">
+            <h1>FILAZUL</h1>
+            <h2>Tequila Blanco</h2>
+            <p>From Our Family to Yours</p>
+            <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.9;">Handcrafted in Arandas, Jalisco</p>
+            <div class="hero-cta">
+                <a href="#story" class="cta-button"><span>Discover Our Story</span></a>
+                <a href="where-to-buy.html" class="cta-button secondary"><span>Find FILAZUL</span></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Story Introduction -->
+    <section id="story" class="story-section animated-section">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <p>From our family and friends along the North American coast, bonding over a shared love for highland tequila, we come together to celebrate this fine agave-forward spirit.</p>
+            <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of a multi-generation distillery located in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
+            <span class="highlight">As all great spirits do.</span>
+            <p style="margin-top: 2rem; font-size: 1.2rem;">From our family to yours, enjoy!</p>
+            <a href="our-story.html" class="cta-button" style="margin-top: 3rem;"><span>Read Our Full Story</span></a>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="product-showcase animated-section">
+        <div class="product-grid">
+            <div class="product-image-side">
+                <div class="bottle-display">
+                    [FILAZUL Blanco<br>Product Image]
+                </div>
+            </div>
+            <div class="product-info-side">
+                <h3>FILAZUL</h3>
+                <div class="product-tagline">Tequila Blanco</div>
+                <p class="product-description">
+                    An agave-forward spirit handcrafted in the highlands of Arandas, Jalisco. Our Blanco showcases the pure expression of carefully selected blue agave with distinctive pandan notes alongside classic agave character.
+                </p>
+                
+                <div class="product-specs">
+                    <div class="spec">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">Blanco</div>
+                    </div>
+                    <div class="spec">
+                        <div class="spec-label">ABV</div>
+                        <div class="spec-value">40%</div>
+                    </div>
+                    <div class="spec">
+                        <div class="spec-label">Volume</div>
+                        <div class="spec-value">750ML</div>
+                    </div>
+                    <div class="spec">
+                        <div class="spec-label">NOM</div>
+                        <div class="spec-value">1414</div>
+                    </div>
+                </div>
+                
+                <a href="tequila-blanco.html" class="cta-button"><span>Explore Our Tequila</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Pillars -->
+    <section class="pillars-section animated-section">
+        <h2>What Makes FILAZUL Different</h2>
+        <div class="pillars-grid">
+            <div class="pillar">
+                <div class="pillar-icon">🏔️</div>
+                <h4>Highland Heritage</h4>
+                <p>Crafted by alteños in Arandas, with deep family roots in Los Altos de Jalisco</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">🌾</div>
+                <h4>Agave-Forward</h4>
+                <p>High-sugar agave selected for optimal flavor characteristics and natural complexity</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">💧</div>
+                <h4>Limestone Terroir</h4>
+                <p>Pure water drawn from deep limestone aquifers creates exceptional quality</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">✨</div>
+                <h4>Selective Sourcing</h4>
+                <p>Award-winning distillery allows us to choose only the finest agave plants</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section animated-section">
+        <div class="cta-content">
+            <h2>Now Available in Southern California</h2>
+            <p>FILAZUL is launching exclusively through Blue Cielo distribution in San Diego, CA</p>
+            <a href="where-to-buy.html" class="cta-button"><span>Find FILAZUL Near You</span></a>
+            <a href="where-to-buy.html#contact" class="cta-button secondary"><span>Contact Us About Distribution</span></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="index.html" class="logo-placeholder" style="margin: 0 auto 2rem; display: flex; width: 200px; height: auto;">
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 200px; height: auto;" onerror="this.style.display='none'">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div class="logo-text-small">TEQUILA</div>
+                <div class="logo-text-large">FILAZUL</div>
+            </div>
+        </a>
+        
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="tequila-blanco.html">Our Tequila</a>
+            <a href="where-to-buy.html">Where to Buy</a>
+        </div>
+        
+        <div class="social-links">
+            <div class="social-icon">📷</div>
+            <div class="social-icon">📘</div>
+            <div class="social-icon">🐦</div>
+        </div>
+        
+        <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
+        
+        <div class="legal">
+            <p>DRINK RESPONSIBLY. Must be 21+ to purchase.</p>
+            <p style="margin-top: 1rem;">© 2026 FILAZUL Tequila. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="#" style="color: #888; text-decoration: none;">Terms & Conditions</a> | 
+                <a href="#" style="color: #888; text-decoration: none;">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax effect on hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.getElementById('heroBackground');
+            const nav = document.getElementById('mainNav');
+            
+            // Parallax hero
+            if (heroBackground && scrolled < window.innerHeight) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            // Nav background on scroll
+            if (scrolled > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated sections
+        document.querySelectorAll('.animated-section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

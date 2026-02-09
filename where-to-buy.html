@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where to Buy - FILAZUL Tequila</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-placeholder {
+            width: 150px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a4d6d 0%, #2c5f7d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2c2c2c;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d97832;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            height: 50vh;
+            background: linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 50%, #d97832 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.1)" /></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+        
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .page-hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        /* Content Sections */
+        section {
+            padding: 5rem 5%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: #1a4d6d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Primary Market */
+        .primary-market {
+            background: linear-gradient(135deg, #d97832 0%, #f4a460 100%);
+            color: white;
+            padding: 4rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 5rem;
+            box-shadow: 0 10px 40px rgba(217, 120, 50, 0.3);
+        }
+        
+        .primary-market h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .primary-market p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .primary-market .distributor-info {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c2c2c;
+            padding: 2rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .distributor-info h4 {
+            font-size: 1.3rem;
+            color: #1a4d6d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .distributor-info p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 0;
+        }
+        
+        /* Limited Markets Grid */
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .market-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .market-card:hover {
+            border-color: #d97832;
+            box-shadow: 0 10px 30px rgba(217, 120, 50, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .market-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .market-card h3 {
+            font-size: 1.5rem;
+            color: #1a4d6d;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .market-card .country {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .availability-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f4a460;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        /* Contact for Availability */
+        .contact-section {
+            background: #f9f9f9;
+            padding: 4rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.8rem;
+            color: #1a4d6d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .contact-section p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1a4d6d;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 3px;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d97832;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Expansion Section */
+        .expansion-cta {
+            background: #1a4d6d;
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .expansion-cta h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .expansion-cta p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        .expansion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 4rem auto 3rem;
+        }
+        
+        .expansion-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .expansion-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #f4a460;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .expansion-card p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #d97832;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .cta-button:hover {
+            background: #1a4d6d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 77, 109, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: #1a4d6d;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .legal {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .markets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .expansion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .markets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-placeholder">FILAZUL</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="tequila-blanco.html">Our Tequila</a></li>
+            <li><a href="where-to-buy.html">Where to Buy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <h1>Find FILAZUL</h1>
+            <p>Now Available in Select Markets</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section>
+        <div class="container">
+            <h2>Where to Find FILAZUL</h2>
+            <p class="section-intro">
+                FILAZUL is launching in carefully selected markets with limited availability. We're partnering with premium retailers and venues who share our commitment to quality and craft.
+            </p>
+
+            <!-- Primary Market - Southern California -->
+            <div class="primary-market">
+                <h3>🌴 Southern California</h3>
+                <p>Our home launch market with the widest availability</p>
+                <div class="distributor-info">
+                    <h4>Blue Cielo Distribution</h4>
+                    <p>San Diego & Greater Southern California</p>
+                    <p style="margin-top: 1rem; font-size: 1rem;"><strong>Contact:</strong> Available at select retailers and premium venues</p>
+                </div>
+                <a href="#contact" class="cta-button" style="margin-top: 2rem; background: white; color: #d97832;">Find Retailers Near You</a>
+            </div>
+
+            <!-- Limited Availability Markets -->
+            <h2 style="margin-top: 5rem;">Limited Availability</h2>
+            <p class="section-intro">
+                FILAZUL is available in very limited quantities in these select international markets. Contact us for specific retailer and venue information.
+            </p>
+
+            <div class="markets-grid">
+                <div class="market-card">
+                    <div class="market-icon">🌲</div>
+                    <h3>Seattle</h3>
+                    <div class="country">United States</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Pacific Northwest's premier cocktail bars and specialty retailers</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">🌊</div>
+                    <h3>Miami</h3>
+                    <div class="country">United States</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Select South Beach venues and premium spirits retailers</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">🍁</div>
+                    <h3>Toronto</h3>
+                    <div class="country">Canada</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Curated selection at top cocktail destinations</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">⛰️</div>
+                    <h3>Vancouver</h3>
+                    <div class="country">Canada</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">West Coast premium venues and specialty shops</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">🏛️</div>
+                    <h3>Milan</h3>
+                    <div class="country">Italy</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Exclusive cocktail bars in Italy's style capital</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">🦘</div>
+                    <h3>Sydney</h3>
+                    <div class="country">Australia</div>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Select harbourside venues and premium retailers</p>
+                    <div class="availability-badge">Limited</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact for Availability -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h3>Find FILAZUL in Your City</h3>
+                <p>Looking for specific retailers or venues in these markets? Fill out the form below and we'll connect you with where to find FILAZUL near you.</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="market">Your Market</label>
+                        <select id="market" name="market" required>
+                            <option value="">Select your city</option>
+                            <option value="socal">Southern California</option>
+                            <option value="seattle">Seattle</option>
+                            <option value="miami">Miami</option>
+                            <option value="toronto">Toronto</option>
+                            <option value="vancouver">Vancouver</option>
+                            <option value="milan">Milan</option>
+                            <option value="sydney">Sydney</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Let us know what you're looking for..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-button" style="width: 100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion CTA -->
+    <section class="expansion-cta">
+        <div class="container">
+            <h2>Bringing FILAZUL to Your Market</h2>
+            <p>We're carefully expanding to new markets and seeking the right distribution partners, retailers, and venues who share our passion for exceptional tequila.</p>
+            
+            <div class="expansion-grid">
+                <div class="expansion-card">
+                    <h4>Distributors</h4>
+                    <p>Interested in distributing FILAZUL in your region? We're looking for partners who understand craft spirits and premium service.</p>
+                </div>
+                
+                <div class="expansion-card">
+                    <h4>Retailers</h4>
+                    <p>Specialty bottle shops and premium wine & spirits retailers: bring FILAZUL to your customers who appreciate artisanal quality.</p>
+                </div>
+                
+                <div class="expansion-card">
+                    <h4>Bars & Restaurants</h4>
+                    <p>Craft cocktail bars, upscale dining, and hospitality groups: feature FILAZUL and our signature Pandan Suntan cocktail.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="mailto:trade@filazul.com" class="cta-button secondary">Trade Inquiries</a>
+                <a href="#contact" class="cta-button" style="margin-left: 1rem;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo-placeholder" style="margin: 0 auto 2rem;">FILAZUL</div>
+        
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="tequila-blanco.html">Our Tequila</a>
+            <a href="where-to-buy.html">Where to Buy</a>
+        </div>
+        
+        <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
+        
+        <div class="legal">
+            <p>DRINK RESPONSIBLY. Must be of legal drinking age to purchase.</p>
+            <p style="margin-top: 1rem;">© 2026 FILAZUL Tequila. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

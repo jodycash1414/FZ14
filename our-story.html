@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - FILAZUL Tequila</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-placeholder {
+            width: 150px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a4d6d 0%, #2c5f7d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2c2c2c;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d97832;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 50%, #d97832 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L55 30 L50 50 L45 30 Z" fill="rgba(255,255,255,0.05)" /></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .page-hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .page-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        /* Content Sections */
+        section {
+            padding: 5rem 5%;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .story-section {
+            margin-bottom: 5rem;
+        }
+        
+        .story-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a4d6d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .story-section p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+        
+        .story-section .highlight {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #d97832;
+            font-weight: 500;
+            display: block;
+            margin: 2rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-left: 4px solid #d97832;
+        }
+        
+        .quote-block {
+            background: #1a4d6d;
+            color: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: center;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f4a460 0%, #d97832 50%, #1a4d6d 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            padding: 2.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .value-card:hover {
+            border-color: #d97832;
+            box-shadow: 0 5px 20px rgba(217, 120, 50, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            color: #1a4d6d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .value-card p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d97832;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d97832;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #d97832;
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            color: #1a4d6d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Background Sections */
+        .bg-light {
+            background: #f9f9f9;
+        }
+        
+        .bg-dark {
+            background: #2c2c2c;
+            color: white;
+        }
+        
+        .bg-dark h2 {
+            color: white;
+        }
+        
+        .bg-dark p {
+            color: #ddd;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #d97832;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+        
+        .cta-button:hover {
+            background: #1a4d6d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 77, 109, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .legal {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-placeholder">FILAZUL</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="tequila-blanco.html">Our Tequila</a></li>
+            <li><a href="where-to-buy.html">Where to Buy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <h1>Our Story</h1>
+            <p>From Our Family to Yours</p>
+        </div>
+    </div>
+
+    <!-- Origin Story -->
+    <section>
+        <div class="container">
+            <div class="story-section">
+                <h2>The Beginning</h2>
+                <p>From our family and friends along the North American coast, bonding over a shared love for highland tequila, we come together to celebrate this fine agave-forward spirit.</p>
+                
+                <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of a multi-generation distillery located in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
+                
+                <div class="highlight">
+                    "As all great spirits do."
+                </div>
+                
+                <p>From our family to yours, enjoy!</p>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Two Partners, One Vision</h2>
+                    <p>FILAZUL was founded by two partners united by a passion for exceptional tequila and a deep appreciation for the craft that goes into every bottle.</p>
+                    <p>One of our founders carries with him the heritage of Los Altos de Jalisco, with deep family roots in Tepatitlán. This connection runs through our veins—we are alteños, people of the highlands, and this identity shapes everything we do.</p>
+                    <p>What began as gatherings among friends along the North American coast, sharing stories over glasses of highland tequila, evolved into a mission: to bring an authentic, flavor-first tequila to those who appreciate quality and craft.</p>
+                </div>
+                <div class="image-placeholder">
+                    [Image: Founders/Highland Landscape]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alteño Heritage -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="story-section">
+                <h2>Alteño Heritage</h2>
+                <p>To be an alteño is to carry the spirit of the highlands in your heart. Los Altos de Jalisco is more than just a region—it's a way of life, a tradition of excellence, and a commitment to craft that spans generations.</p>
+                
+                <p>Our family roots in Tepatitlán connect us to the land, the people, and the centuries-old tradition of tequila making. This isn't just where we source our tequila—this is where we come from.</p>
+                
+                <p>The highlands have shaped us, and in turn, we honor that heritage with every bottle of FILAZUL. We understand the terroir, we know the masters, and we respect the process because it's part of who we are.</p>
+            </div>
+
+            <div class="quote-block">
+                "We are not just making tequila in the highlands—<br>we are alteños making tequila from our homeland."
+            </div>
+
+            <div class="two-column">
+                <div class="image-placeholder">
+                    [Image: Agave Fields/Arandas]
+                </div>
+                <div>
+                    <h2>Why Arandas</h2>
+                    <p>Arandas sits at the heart of Los Altos, renowned worldwide for producing some of Mexico's finest tequila. The elevation, climate, and limestone-rich soil create ideal conditions for growing exceptional blue agave.</p>
+                    <p>Our partnership with a multi-generation distillery in Arandas allows us to work with master craftsmen who have dedicated their lives to perfecting their art. Their award-winning expertise, combined with our selective standards, ensures every bottle of FILAZUL meets our vision of what highland tequila should be.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Philosophy -->
+    <section>
+        <div class="container">
+            <div class="story-section">
+                <h2>Our Philosophy</h2>
+                <p>At FILAZUL, everything begins and ends with flavor. We believe that exceptional tequila doesn't need to hide behind elaborate aging or complex infusions—the agave should speak for itself.</p>
+                
+                <p>That's why we focus on an agave-forward expression that showcases the pure character of highland blue agave. Subtle, yet with sneaky complexity, our Blanco reveals layers of flavor that unfold with each sip.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Flavor First</h3>
+                    <p>Every decision we make—from agave selection to production methods—is guided by one question: will this make the tequila taste better? Quality over everything.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Selective Sourcing</h3>
+                    <p>Working with a distillery that has access to abundant, high-quality agave allows us to be exceptionally selective. We choose plants based on sugar content and flavor characteristics, ensuring consistency and excellence.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Highland Terroir</h3>
+                    <p>The limestone aquifers of Los Altos provide pristine water drawn from deep wells. Combined with ideal elevation and climate, our agave develops higher sugar content and natural complexity.</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3>Artisanal Craft</h3>
+                    <p>Multi-generational expertise meets modern precision. Small-batch production ensures quality control, while award-winning master distillers bring decades of knowledge to every batch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Journey -->
+    <section class="bg-dark">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">The Journey</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Shared Passion</h4>
+                        <p>Friends and family along the North American coast discover a shared love for highland tequila, bonding over the unique character and quality of Los Altos expressions.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>The Vision Takes Shape</h4>
+                        <p>Two partners unite with a mission: create an artisanal tequila brand that puts flavor first, honoring the alteño heritage while bringing exceptional tequila to those who appreciate craft.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Finding the Right Partner</h4>
+                        <p>Connecting with an award-winning, multi-generation distillery in Arandas that shares our commitment to quality and artisanal methods. Together, we establish the standards that define FILAZUL.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Perfecting the Expression</h4>
+                        <p>Through careful agave selection, utilizing highland terroir, and working with master distillers, we craft a Blanco that embodies our vision: pure, earthy, and with that subtle, sneaky complexity.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>FILAZUL is Born</h4>
+                        <p>From our family to yours—FILAZUL Tequila Blanco launches in Southern California, bringing the spirit of the highlands to those who appreciate exceptional tequila.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Statement -->
+    <section>
+        <div class="container" style="text-align: center;">
+            <h2 style="margin-bottom: 2rem;">From Our Family to Yours</h2>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; color: #555;">
+                FILAZUL is more than just tequila—it's a celebration of heritage, friendship, and the pursuit of exceptional flavor. We invite you to be part of our journey, to share in the spirit that brought us together, and to experience the highlands in every sip.
+            </p>
+            <a href="#" class="cta-button">Explore Our Tequila</a>
+            <a href="#" class="cta-button" style="background: white; color: #1a4d6d; border: 2px solid #1a4d6d; margin-left: 1rem;">Find FILAZUL</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo-placeholder" style="margin: 0 auto 2rem;">FILAZUL</div>
+        
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="tequila-blanco.html">Our Tequila</a>
+            <a href="where-to-buy.html">Where to Buy</a>
+        </div>
+        
+        <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
+        
+        <div class="legal">
+            <p>DRINK RESPONSIBLY. Must be 21+ to purchase.</p>
+            <p style="margin-top: 1rem;">© 2026 FILAZUL Tequila. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
