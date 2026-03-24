@@ -881,7 +881,9 @@
       if(vid.readyState >= 2 && vid.duration){
         const t = prog * vid.duration;
         if(Math.abs(vid.currentTime - t) > 0.05) vid.currentTime = t;
-        ctx.drawImage(vid, 0, 0, W, H);
+        const scale = Math.max(W / vid.videoWidth, H / vid.videoHeight);
+        const dw = vid.videoWidth * scale, dh = vid.videoHeight * scale;
+        ctx.drawImage(vid, (W - dw) / 2, (H - dh) / 2, dw, dh);
       } else {
         ctx.fillStyle = '#0a0a0a';
         ctx.fillRect(0, 0, W, H);
