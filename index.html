@@ -817,7 +817,7 @@
     <!-- Scroll Experience -->
     <div id="fz-track" style="height:500vh;position:relative;">
       <div id="fz-sticky" style="position:sticky;top:0;height:100vh;overflow:hidden;background:#000;">
-        <video id="fz-vid" src="assets/videos/filazul-master.mp4" preload="auto" muted playsinline webkit-playsinline style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;"></video>
+        <video id="fz-vid" src="assets/videos/filazul-master.mp4" preload="auto" muted playsinline webkit-playsinline style="position:absolute;opacity:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
         <canvas id="cv" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <div id="fila" style="font-family:'Noto Serif',serif;font-size:clamp(2.8rem,12vw,8rem);font-weight:700;color:#f5f0e8;letter-spacing:0.3em;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:36%;left:50%;transform:translateX(-50%);white-space:nowrap;opacity:0;pointer-events:none;">FILA</div>
         <div id="row"  style="font-family:'Noto Serif',serif;font-style:italic;font-size:clamp(0.75rem,1.8vw,1.2rem);font-weight:300;color:#c9a96e;letter-spacing:0.5em;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:54%;left:50%;transform:translateX(-50%);white-space:nowrap;opacity:0;pointer-events:none;">row &nbsp;&middot;&nbsp; line &nbsp;&middot;&nbsp; file</div>
@@ -856,6 +856,16 @@
     const lerp  = (a,b,t) => a+(b-a)*t;
     const clamp = (v,a,b) => Math.min(b,Math.max(a,v));
     const map   = (v,a,b,c,d) => c+(d-c)*clamp((v-a)/(b-a),0,1);
+
+    // iOS Safari requires a user gesture to unlock video seeking
+    let unlocked = false;
+    function unlockVideo() {
+      if (unlocked) return;
+      unlocked = true;
+      vid.play().then(() => vid.pause()).catch(() => {});
+    }
+    window.addEventListener('touchstart', unlockVideo, {once: true, passive: true});
+    window.addEventListener('scroll',     unlockVideo, {once: true, passive: true});
 
     let prog=0, target=0;
     window.addEventListener('scroll', ()=>{
