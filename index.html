@@ -889,17 +889,154 @@
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.7rem,1.4vw,1rem);font-weight:300;color:rgba(201,169,110,0.8);letter-spacing:0.25em;text-shadow:0 2px 20px rgba(0,0,0,0.8);">hand-crafted in the highlands</div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.65rem,1.2vw,0.9rem);font-weight:300;font-style:italic;color:rgba(201,169,110,0.6);letter-spacing:0.2em;text-shadow:0 2px 20px rgba(0,0,0,0.8);margin-top:0.2em;">arandas, jalisco, mexico</div>
         </div>
-        <div id="hint" style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;transition:opacity 0.8s;">
-          <span style="font-family:'Palatino Linotype',serif;font-style:italic;color:rgba(245,240,232,0.4);font-size:11px;letter-spacing:0.35em;">scroll</span>
-          <div id="arrow" style="width:1px;height:32px;background:linear-gradient(to bottom,rgba(245,240,232,0.45),transparent);"></div>
+        <div id="scroll-hint" style="position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);pointer-events:none;z-index:10;">
+          <svg viewBox="0 0 220 380" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:block;width:clamp(130px,14vw,190px);overflow:visible;">
+
+            <!-- QUIOTE: agave flower stalk -->
+            <line x1="110" y1="10" x2="110" y2="93" stroke-width="1.6"/>
+            <!-- Terminal flower -->
+            <g transform="translate(110,10)">
+              <circle r="2.5" stroke-width="1"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(0)"   stroke-width="0.8"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(60)"  stroke-width="0.8"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(120)" stroke-width="0.8"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(180)" stroke-width="0.8"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(240)" stroke-width="0.8"/>
+              <ellipse cx="0" cy="-4.5" rx="1.2" ry="2" transform="rotate(300)" stroke-width="0.8"/>
+            </g>
+            <!-- Branch pair 1 -->
+            <line x1="110" y1="22" x2="98"  y2="13" stroke-width="1.2"/>
+            <line x1="110" y1="22" x2="122" y2="13" stroke-width="1.2"/>
+            <g transform="translate(96,11)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <g transform="translate(124,11)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <!-- Branch pair 2 -->
+            <line x1="110" y1="36" x2="93"  y2="25" stroke-width="1.2"/>
+            <line x1="110" y1="36" x2="127" y2="25" stroke-width="1.2"/>
+            <g transform="translate(91,23)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <g transform="translate(129,23)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <!-- Branch pair 3 -->
+            <line x1="110" y1="51" x2="87"  y2="38" stroke-width="1.2"/>
+            <line x1="110" y1="51" x2="133" y2="38" stroke-width="1.2"/>
+            <g transform="translate(85,36)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <g transform="translate(135,36)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <!-- Branch pair 4 -->
+            <line x1="110" y1="66" x2="80"  y2="51" stroke-width="1.2"/>
+            <line x1="110" y1="66" x2="140" y2="51" stroke-width="1.2"/>
+            <g transform="translate(78,49)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <g transform="translate(142,49)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <!-- Branch pair 5 (widest) -->
+            <line x1="110" y1="80" x2="72"  y2="63" stroke-width="1.2"/>
+            <line x1="110" y1="80" x2="148" y2="63" stroke-width="1.2"/>
+            <g transform="translate(70,61)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+            <g transform="translate(150,61)"><circle r="2" stroke-width="0.9"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(0)"   stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(60)"  stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(120)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(180)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(240)" stroke-width="0.7"/>
+              <ellipse cx="0" cy="-3.8" rx="1" ry="1.7" transform="rotate(300)" stroke-width="0.7"/>
+            </g>
+
+            <!-- SCROLL text -->
+            <text x="110" y="142" text-anchor="middle"
+                  font-family="'Barlow Condensed',sans-serif"
+                  font-weight="800" font-size="44" letter-spacing="3"
+                  fill="currentColor" stroke="none">SCROLL</text>
+
+            <!-- Double downward arrow -->
+            <polyline points="96,154 110,172 124,154" stroke-width="2.2"/>
+            <polyline points="96,166 110,184 124,166" stroke-width="2.2"/>
+
+            <!-- AGAVE ROSETTE: 14 leaves -->
+            <g transform="translate(110,295)" fill="none" stroke-width="1.3">
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(0)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(26)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(51)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(77)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(103)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(128)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(154)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(180)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(206)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(231)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(257)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(283)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(308)"/>
+              <path d="M 0,0 Q -9,-37.5 0,-75 Q 9,-37.5 0,0 Z" transform="rotate(334)"/>
+            </g>
+
+          </svg>
         </div>
         <div id="pb" style="position:absolute;bottom:0;left:0;height:2px;background:rgba(201,169,110,0.5);width:0%;transition:width 0.05s linear;"></div>
       </div>
     </div>
 
     <style>
-    #arrow{animation:ap 2s ease-in-out infinite;}
-    @keyframes ap{0%,100%{opacity:0.4}50%{opacity:1}}
+    @keyframes scrollPulse{0%,100%{color:#c9a96e}50%{color:#f5f0e8}}
+    #scroll-hint{animation:scrollPulse 2.2s ease-in-out infinite;}
     @media (min-aspect-ratio: 3/2) {
       #row  { top: 66% !important; }
       #blue { top: 72% !important; }
@@ -949,7 +1086,7 @@
       s('blue', map(p,0.44,0.50,0,1)*(1-map(p,0.63,0.69,0,1)));
       s('logo', map(p,0.69,0.75,0,1)*(1-map(p,0.84,0.91,0,1)));
       s('tag',  map(p,0.73,0.78,0,1)*(1-map(p,0.84,0.91,0,1)));
-      document.getElementById('hint').style.opacity = p<0.04 ? '1' : '0';
+      s('scroll-hint', map(p, 0, 0.07, 1, 0));
       document.getElementById('pb').style.width = (p*100)+'%';
     }
 
