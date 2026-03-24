@@ -885,16 +885,34 @@
       document.getElementById('pb').style.width = (p*100)+'%';
     }
 
+    let seeking = false, nextSeek = null, hasFrame = false;
+
+    function drawFrame(){
+      if(vid.readyState < 2 || !vid.videoWidth) return;
+      const scale = Math.max(W / vid.videoWidth, H / vid.videoHeight);
+      const dw = vid.videoWidth * scale, dh = vid.videoHeight * scale;
+      ctx.drawImage(vid, (W - dw) / 2, (H - dh) / 2, dw, dh);
+      hasFrame = true;
+    }
+
+    vid.addEventListener('seeked', () => {
+      drawFrame();
+      seeking = false;
+      if(nextSeek !== null){ vid.currentTime = nextSeek; nextSeek = null; seeking = true; }
+    });
+
     (function loop(){
       prog = lerp(prog, target, 0.075);
-      ctx.clearRect(0, 0, W, H);
       if(vid.readyState >= 2 && vid.duration){
         const t = prog * vid.duration;
-        if(Math.abs(vid.currentTime - t) > 0.05) vid.currentTime = t;
-        const scale = Math.max(W / vid.videoWidth, H / vid.videoHeight);
-        const dw = vid.videoWidth * scale, dh = vid.videoHeight * scale;
-        ctx.drawImage(vid, (W - dw) / 2, (H - dh) / 2, dw, dh);
-      } else {
+        if(!seeking){
+          if(Math.abs(vid.currentTime - t) > 0.033){ vid.currentTime = t; seeking = true; }
+          else { drawFrame(); }
+        } else {
+          nextSeek = t;
+        }
+      } else if(!hasFrame){
+        // Only paint black before the very first frame — never after
         ctx.fillStyle = '#0a0a0a';
         ctx.fillRect(0, 0, W, H);
       }
