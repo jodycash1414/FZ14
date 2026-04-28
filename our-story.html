@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/vwf7bbs.css">
     <title>Our Story - FILAZUL Tequila</title>
     <style>
         * {
@@ -10,165 +14,115 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Franklin Gothic Demi Cond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'worker', 'Franklin Gothic Medium', Arial, sans-serif;
             line-height: 1.6;
             color: #2c2c2c;
         }
-        
+
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .logo-placeholder {
             width: 150px;
             height: 50px;
             background: transparent;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            padding: 0.5rem;
             text-decoration: none;
         }
-        
+
         .logo-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        
-        .logo-text-small {
-            font-size: 0.5rem;
-            letter-spacing: 3px;
-            margin-bottom: 0.2rem;
-            color: white;
-        }
-        
-        .logo-text-large {
-            font-size: 1.3rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: white;
-        }
-        
-        .logo-placeholder.has-image .logo-text-small,
-        .logo-placeholder.has-image .logo-text-large {
-            display: none;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
+
+        nav ul { display: flex; list-style: none; gap: 2rem; }
         nav a {
             text-decoration: none;
-            color: #2c2c2c;
-            font-weight: 500;
+            color: white;
+            font-weight: 400;
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
             transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #d97832;
-        }
-        
-        /* Page Hero */
-        .page-hero {
-            height: 60vh;
-            background: linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 50%, #d97832 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 80px;
             position: relative;
-            overflow: hidden;
         }
-        
-        .page-hero::before {
+        nav a:not(.logo-placeholder)::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L55 30 L50 50 L45 30 Z" fill="rgba(255,255,255,0.05)" /></svg>') repeat;
-            opacity: 0.3;
+            width: 0;
+            height: 2px;
+            background: #d97832;
+            transition: width 0.3s ease;
         }
-        
-        .page-hero-content {
+        nav a:not(.logo-placeholder):hover::after { width: 100%; }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 10rem 5% 6rem;
+            background: radial-gradient(ellipse at 50% 0%, rgba(26,77,109,0.5) 0%, transparent 70%), #0a0a0a;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 2rem;
         }
-        
-        .page-hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        .page-hero p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        
+        .page-hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .page-hero h1 { font-size: 4rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #f5f0e8; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; color: #c9a96e; letter-spacing: 2px; font-weight: 400; }
+
         /* Content Sections */
         section {
             padding: 5rem 5%;
         }
-        
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .story-section {
             margin-bottom: 5rem;
         }
-        
+
         .story-section h2 {
             font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 2rem;
             color: #1a4d6d;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         .story-section p {
             font-size: 1.2rem;
+            font-weight: 400;
             line-height: 1.9;
             margin-bottom: 1.5rem;
             color: #444;
         }
-        
+
         .story-section .highlight {
             font-size: 1.4rem;
             font-style: italic;
+            font-weight: 400;
             color: #d97832;
-            font-weight: 500;
             display: block;
             margin: 2rem 0;
             text-align: center;
@@ -176,7 +130,7 @@
             background: #f9f9f9;
             border-left: 4px solid #d97832;
         }
-        
+
         .quote-block {
             background: #1a4d6d;
             color: white;
@@ -188,7 +142,7 @@
             text-align: center;
             line-height: 1.8;
         }
-        
+
         /* Two Column Layout */
         .two-column {
             display: grid;
@@ -197,7 +151,7 @@
             margin: 4rem 0;
             align-items: center;
         }
-        
+
         .image-placeholder {
             width: 100%;
             height: 400px;
@@ -210,7 +164,7 @@
             font-size: 1.2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
+
         /* Values Grid */
         .values-grid {
             display: grid;
@@ -218,42 +172,44 @@
             gap: 3rem;
             margin-top: 3rem;
         }
-        
+
         .value-card {
             padding: 2.5rem;
             background: white;
             border: 2px solid #e0e0e0;
             border-radius: 5px;
-            transition: all 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
-        
+
         .value-card:hover {
             border-color: #d97832;
             box-shadow: 0 5px 20px rgba(217, 120, 50, 0.2);
             transform: translateY(-5px);
         }
-        
+
         .value-card h3 {
             font-size: 1.5rem;
+            font-weight: 700;
             color: #1a4d6d;
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .value-card p {
             font-size: 1.05rem;
+            font-weight: 400;
             color: #555;
             line-height: 1.7;
         }
-        
+
         /* Timeline */
         .timeline {
             position: relative;
             padding: 2rem 0;
             margin: 3rem 0;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -263,21 +219,21 @@
             width: 2px;
             background: #d97832;
         }
-        
+
         .timeline-item {
             display: flex;
             margin-bottom: 3rem;
             position: relative;
         }
-        
+
         .timeline-item:nth-child(odd) {
             flex-direction: row;
         }
-        
+
         .timeline-item:nth-child(even) {
             flex-direction: row-reverse;
         }
-        
+
         .timeline-content {
             width: 45%;
             padding: 2rem;
@@ -285,7 +241,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 5px;
         }
-        
+
         .timeline-dot {
             position: absolute;
             left: 50%;
@@ -297,121 +253,115 @@
             border: 4px solid white;
             box-shadow: 0 0 0 2px #d97832;
         }
-        
+
         .timeline-content h4 {
             font-size: 1.3rem;
+            font-weight: 700;
             color: #1a4d6d;
             margin-bottom: 0.5rem;
         }
-        
+
         .timeline-content p {
             font-size: 1rem;
+            font-weight: 400;
             color: #555;
             line-height: 1.6;
         }
-        
+
         /* Background Sections */
         .bg-light {
             background: #f9f9f9;
         }
-        
+
         .bg-dark {
             background: #2c2c2c;
             color: white;
         }
-        
+
         .bg-dark h2 {
             color: white;
+            font-weight: 700;
         }
-        
+
         .bg-dark p {
             color: #ddd;
+            font-weight: 400;
         }
-        
+
         /* CTA Button */
         .cta-button {
             display: inline-block;
-            padding: 1rem 3rem;
-            background: #d97832;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(135deg, #d97832, #f4a460);
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-radius: 3px;
-            transition: all 0.3s;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
             margin-top: 2rem;
         }
-        
-        .cta-button:hover {
-            background: #1a4d6d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 77, 109, 0.4);
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(217,120,50,0.4); background: linear-gradient(135deg, #d97832, #f4a460); }
+        .cta-button.secondary, .cta-button[style*="background: white"], .cta-button[style*="background:white"] {
+            background: transparent !important;
+            border: 2px solid #1a4d6d;
+            color: #1a4d6d !important;
         }
-        
+        .cta-button.secondary:hover { background: rgba(26,77,109,0.1) !important; transform: translateY(-3px); }
+
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #0a0a0a;
             color: white;
-            padding: 3rem 5%;
+            padding: 4rem 5%;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .footer-nav { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-nav a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s; font-weight: 400; }
+        .footer-nav a:hover { color: #f4a460; }
+        .legal { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: #888; }
+
+        /* Form inputs */
+        input, textarea, select {
+            font-family: 'worker', 'Franklin Gothic Medium', Arial, sans-serif;
         }
-        
-        .footer-nav a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .legal {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            font-size: 0.85rem;
-            color: #888;
-        }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .two-column {
                 grid-template-columns: 1fr;
             }
-            
+
             .values-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .timeline::before {
                 left: 20px;
             }
-            
+
             .timeline-item {
                 flex-direction: row !important;
             }
-            
+
             .timeline-content {
                 width: calc(100% - 60px);
                 margin-left: 60px;
             }
-            
+
             .timeline-dot {
                 left: 20px;
             }
-            
+
             nav ul {
                 display: none;
             }
@@ -422,12 +372,9 @@
     <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo-placeholder">
-            <img src="filazul-logo.png" alt="FILAZUL Tequila" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
-            <div class="logo-text-small">TEQUILA</div>
-            <div class="logo-text-large">FILAZUL</div>
+            <img src="filazul-logo.png" alt="FILAZUL Tequila">
         </a>
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="tequila-blanco.html">Our Tequila</a></li>
             <li><a href="where-to-buy.html">Where to Buy</a></li>
@@ -448,13 +395,13 @@
             <div class="story-section">
                 <h2>The Beginning</h2>
                 <p>From our family and friends along the North American coast, bonding over a shared love for highland tequila, we come together to celebrate this fine agave-forward spirit.</p>
-                
+
                 <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of a multi-generation distillery located in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
-                
+
                 <div class="highlight">
                     "As all great spirits do."
                 </div>
-                
+
                 <p>From our family to yours, enjoy!</p>
             </div>
 
@@ -478,9 +425,9 @@
             <div class="story-section">
                 <h2>Alteño Heritage</h2>
                 <p>To be an alteño is to carry the spirit of the highlands in your heart. Los Altos de Jalisco is more than just a region—it's a way of life, a tradition of excellence, and a commitment to craft that spans generations.</p>
-                
+
                 <p>Our family roots in Tepatitlán connect us to the land, the people, and the centuries-old tradition of tequila making. This isn't just where we source our tequila—this is where we come from.</p>
-                
+
                 <p>The highlands have shaped us, and in turn, we honor that heritage with every bottle of FILAZUL. We understand the terroir, we know the masters, and we respect the process because it's part of who we are.</p>
             </div>
 
@@ -507,7 +454,7 @@
             <div class="story-section">
                 <h2>Our Philosophy</h2>
                 <p>At FILAZUL, everything begins and ends with flavor. We believe that exceptional tequila doesn't need to hide behind elaborate aging or complex infusions—the agave should speak for itself.</p>
-                
+
                 <p>That's why we focus on an agave-forward expression that showcases the pure character of highland blue agave. Subtle, yet with sneaky complexity, our Blanco reveals layers of flavor that unfold with each sip.</p>
             </div>
 
@@ -516,17 +463,17 @@
                     <h3>Flavor First</h3>
                     <p>Every decision we make—from agave selection to production methods—is guided by one question: will this make the tequila taste better? Quality over everything.</p>
                 </div>
-                
+
                 <div class="value-card">
                     <h3>Selective Sourcing</h3>
                     <p>Working with a distillery that has access to abundant, high-quality agave allows us to be exceptionally selective. We choose plants based on sugar content and flavor characteristics, ensuring consistency and excellence.</p>
                 </div>
-                
+
                 <div class="value-card">
                     <h3>Highland Terroir</h3>
                     <p>The limestone aquifers of Los Altos provide pristine water drawn from deep wells. Combined with ideal elevation and climate, our agave develops higher sugar content and natural complexity.</p>
                 </div>
-                
+
                 <div class="value-card">
                     <h3>Artisanal Craft</h3>
                     <p>Multi-generational expertise meets modern precision. Small-batch production ensures quality control, while award-winning master distillers bring decades of knowledge to every batch.</p>
@@ -539,7 +486,7 @@
     <section class="bg-dark">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 3rem;">The Journey</h2>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
@@ -548,7 +495,7 @@
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h4>The Vision Takes Shape</h4>
@@ -556,7 +503,7 @@
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h4>Finding the Right Partner</h4>
@@ -564,7 +511,7 @@
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h4>Perfecting the Expression</h4>
@@ -572,7 +519,7 @@
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h4>FILAZUL is Born</h4>
@@ -588,7 +535,7 @@
     <section>
         <div class="container" style="text-align: center;">
             <h2 style="margin-bottom: 2rem;">From Our Family to Yours</h2>
-            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; color: #555;">
+            <p style="font-size: 1.3rem; font-weight: 400; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; color: #555;">
                 FILAZUL is more than just tequila—it's a celebration of heritage, friendship, and the pursuit of exceptional flavor. We invite you to be part of our journey, to share in the spirit that brought us together, and to experience the highlands in every sip.
             </p>
             <a href="#" class="cta-button">Explore Our Tequila</a>
@@ -599,25 +546,19 @@
     <!-- Footer -->
     <footer>
         <a href="index.html" class="logo-placeholder" style="margin: 0 auto 2rem; display: flex; width: 200px; height: 66px;">
-            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 100%; height: 100%; object-fit: contain;" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
-                <div class="logo-text-small">TEQUILA</div>
-                <div class="logo-text-large" style="font-size: 2rem;">FILAZUL</div>
-            </div>
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 100%; height: 100%; object-fit: contain;">
         </a>
-        
         <div class="footer-nav">
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
             <a href="tequila-blanco.html">Our Tequila</a>
             <a href="where-to-buy.html">Where to Buy</a>
         </div>
-        
         <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
-        
         <div class="legal">
             <p>DRINK RESPONSIBLY. Must be 21+ to purchase.</p>
             <p style="margin-top: 1rem;">© 2026 FILAZUL Tequila. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><a href="#" style="color: #888; text-decoration: none;">Terms & Conditions</a> | <a href="#" style="color: #888; text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
 </body>

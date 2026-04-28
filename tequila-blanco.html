@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/vwf7bbs.css">
     <title>Tequila Blanco - FILAZUL</title>
     <style>
         * {
@@ -10,92 +14,68 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Franklin Gothic Demi Cond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'worker', 'Franklin Gothic Medium', Arial, sans-serif;
             line-height: 1.6;
             color: #2c2c2c;
         }
-        
+
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
         .logo-placeholder {
             width: 150px;
             height: 50px;
             background: transparent;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            padding: 0.5rem;
             text-decoration: none;
         }
-        
-        .logo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .logo-text-small {
-            font-size: 0.5rem;
-            letter-spacing: 3px;
-            margin-bottom: 0.2rem;
-            color: white;
-        }
-        
-        .logo-text-large {
-            font-size: 1.3rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: white;
-        }
-        
-        .logo-placeholder.has-image .logo-text-small,
-        .logo-placeholder.has-image .logo-text-large {
-            display: none;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
+        .logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
         nav a {
             text-decoration: none;
-            color: #2c2c2c;
-            font-weight: 500;
+            color: white;
+            font-weight: 400;
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
             transition: color 0.3s;
+            position: relative;
         }
-        
-        nav a:hover {
-            color: #d97832;
+        nav a:not(.logo-placeholder)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d97832;
+            transition: width 0.3s ease;
         }
-        
+        nav a:not(.logo-placeholder):hover::after { width: 100%; }
+
         /* Product Hero */
         .product-hero {
-            margin-top: 80px;
-            padding: 5rem 5%;
+            padding-top: 120px;
+            padding-bottom: 5rem;
+            padding-left: 5%;
+            padding-right: 5%;
             background: linear-gradient(to bottom, #f9f9f9 0%, white 100%);
         }
-        
+
         .product-hero-grid {
             max-width: 1400px;
             margin: 0 auto;
@@ -104,56 +84,45 @@
             gap: 5rem;
             align-items: center;
         }
-        
+
         .product-image-main {
             text-align: center;
         }
-        
-        .bottle-placeholder {
-            width: 100%;
-            max-width: 500px;
-            height: 700px;
-            background: linear-gradient(135deg, #f4a460 0%, #d97832 30%, #5a7ba6 60%, #1a4d6d 100%);
-            margin: 0 auto;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        
+
         .product-info h1 {
             font-size: 3.5rem;
             color: #1a4d6d;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 3px;
+            font-weight: 700;
         }
-        
+
         .product-subtitle {
             font-size: 1.5rem;
             color: #d97832;
             margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: 700;
         }
-        
+
         .product-tagline {
             font-size: 1.3rem;
             font-style: italic;
             color: #555;
             margin-bottom: 2rem;
+            font-weight: 400;
         }
-        
+
         .product-description {
             font-size: 1.15rem;
             line-height: 1.8;
             color: #444;
             margin-bottom: 2rem;
+            font-weight: 400;
         }
-        
+
         .product-specs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -163,67 +132,61 @@
             background: #f9f9f9;
             border-left: 4px solid #d97832;
         }
-        
+
         .spec {
             display: flex;
             flex-direction: column;
         }
-        
+
         .spec-label {
             font-size: 0.85rem;
             text-transform: uppercase;
             color: #888;
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
+            font-weight: 400;
         }
-        
+
         .spec-value {
             font-size: 1.4rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #1a4d6d;
         }
-        
+
         .cta-button {
             display: inline-block;
-            padding: 1rem 3rem;
-            background: #d97832;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(135deg, #d97832, #f4a460);
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-radius: 3px;
-            transition: all 0.3s;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
             margin-right: 1rem;
         }
-        
-        .cta-button:hover {
-            background: #1a4d6d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 77, 109, 0.4);
-        }
-        
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(217,120,50,0.4); }
         .cta-button.secondary {
-            background: white;
-            color: #1a4d6d;
+            background: transparent;
             border: 2px solid #1a4d6d;
+            color: #1a4d6d;
         }
-        
-        .cta-button.secondary:hover {
-            background: #1a4d6d;
-            color: white;
-        }
-        
+        .cta-button.secondary:hover { background: rgba(26,77,109,0.1); transform: translateY(-3px); }
+
         /* Content Sections */
         section {
             padding: 5rem 5%;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         h2 {
             font-size: 2.5rem;
             color: #1a4d6d;
@@ -231,8 +194,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             text-align: center;
+            font-weight: 700;
         }
-        
+
+        h3 {
+            font-weight: 700;
+        }
+
         /* Tasting Notes Section */
         .tasting-notes-grid {
             display: grid;
@@ -240,22 +208,22 @@
             gap: 2rem;
             margin: 3rem 0;
         }
-        
+
         .tasting-note {
             text-align: center;
             padding: 2.5rem 1.5rem;
             background: white;
             border: 2px solid #e0e0e0;
             border-radius: 5px;
-            transition: all 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
-        
+
         .tasting-note:hover {
             border-color: #d97832;
             box-shadow: 0 10px 30px rgba(217, 120, 50, 0.2);
             transform: translateY(-5px);
         }
-        
+
         .note-icon {
             width: 80px;
             height: 80px;
@@ -267,22 +235,23 @@
             justify-content: center;
             font-size: 2.5rem;
         }
-        
+
         .note-title {
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #1a4d6d;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .note-description {
             font-size: 0.95rem;
             color: #666;
             line-height: 1.6;
+            font-weight: 400;
         }
-        
+
         /* How to Enjoy */
         .enjoy-grid {
             display: grid;
@@ -290,12 +259,12 @@
             gap: 3rem;
             margin: 3rem 0;
         }
-        
+
         .enjoy-card {
             text-align: center;
             padding: 2rem;
         }
-        
+
         .enjoy-icon {
             width: 100px;
             height: 100px;
@@ -308,70 +277,74 @@
             font-size: 3rem;
             border: 3px solid #e0e0e0;
         }
-        
+
         .enjoy-card h3 {
             font-size: 1.3rem;
             color: #1a4d6d;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 700;
         }
-        
+
         .enjoy-card p {
             font-size: 1rem;
             color: #555;
             line-height: 1.7;
+            font-weight: 400;
         }
-        
+
         /* Production Section */
         .production-story {
             background: #1a4d6d;
             color: white;
             padding: 5rem 5%;
         }
-        
+
         .production-story h2 {
             color: white;
         }
-        
+
         .production-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
             margin-top: 3rem;
         }
-        
+
         .production-card {
             padding: 2rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .production-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: #f4a460;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 700;
         }
-        
+
         .production-card p {
             font-size: 1.05rem;
             line-height: 1.7;
             color: #ddd;
+            font-weight: 400;
         }
-        
+
         /* Cocktail Section */
         .cocktail-feature {
             background: linear-gradient(135deg, #f4a460 0%, #d97832 100%);
             color: white;
             padding: 5rem 5%;
         }
-        
+
         .cocktail-feature h2 {
             color: white;
         }
-        
+
         .cocktail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -379,7 +352,7 @@
             margin-top: 3rem;
             align-items: center;
         }
-        
+
         .cocktail-image {
             width: 100%;
             height: 500px;
@@ -391,52 +364,56 @@
             font-size: 1.2rem;
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
-        
+
         .cocktail-recipe {
             background: rgba(255, 255, 255, 0.95);
             color: #2c2c2c;
             padding: 3rem;
             border-radius: 10px;
         }
-        
+
         .cocktail-recipe h3 {
             font-size: 2rem;
             color: #1a4d6d;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 700;
         }
-        
+
         .cocktail-recipe p {
             font-size: 1.05rem;
             color: #555;
             margin-bottom: 2rem;
             line-height: 1.7;
+            font-weight: 400;
         }
-        
+
         .ingredients {
             margin-bottom: 2rem;
         }
-        
+
         .ingredients h4 {
             font-size: 1.2rem;
             color: #1a4d6d;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 700;
         }
-        
+
         .ingredients ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .ingredients li {
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
             font-size: 1.05rem;
             color: #444;
+            font-weight: 400;
         }
-        
+
         .ingredients li:before {
             content: "→";
             position: absolute;
@@ -444,62 +421,45 @@
             color: #d97832;
             font-weight: bold;
         }
-        
+
         .instructions h4 {
             font-size: 1.2rem;
             color: #1a4d6d;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 700;
         }
-        
+
         .instructions ol {
             padding-left: 1.5rem;
         }
-        
+
         .instructions li {
             padding: 0.5rem 0;
             font-size: 1.05rem;
             color: #444;
             line-height: 1.6;
+            font-weight: 400;
         }
-        
+
         /* Background Sections */
         .bg-light {
             background: #f9f9f9;
         }
-        
+
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #0a0a0a;
             color: white;
-            padding: 3rem 5%;
+            padding: 4rem 5%;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-nav a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .legal {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            font-size: 0.85rem;
-            color: #888;
-        }
-        
+        .footer-nav { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-nav a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s; font-weight: 400; }
+        .footer-nav a:hover { color: #f4a460; }
+        .legal { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: #888; }
+
         /* Responsive */
         @media (max-width: 768px) {
             .product-hero-grid,
@@ -507,19 +467,19 @@
             .cocktail-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .tasting-notes-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .enjoy-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .product-info h1 {
                 font-size: 2.5rem;
             }
-            
+
             nav ul {
                 display: none;
             }
@@ -530,12 +490,9 @@
     <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo-placeholder">
-            <img src="filazul-logo.png" alt="FILAZUL Tequila" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
-            <div class="logo-text-small">TEQUILA</div>
-            <div class="logo-text-large">FILAZUL</div>
+            <img src="filazul-logo.png" alt="FILAZUL Tequila">
         </a>
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="tequila-blanco.html">Our Tequila</a></li>
             <li><a href="where-to-buy.html">Where to Buy</a></li>
@@ -546,22 +503,20 @@
     <section class="product-hero">
         <div class="product-hero-grid">
             <div class="product-image-main">
-                <div class="bottle-placeholder">
-                    [FILAZUL Blanco<br>Product Image]
-                </div>
+                <img src="assets/bottle.jpg" alt="FILAZUL Tequila Blanco" style="width:100%;max-width:500px;height:700px;object-fit:cover;object-position:center;display:block;margin:0 auto;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
             </div>
-            
+
             <div class="product-info">
                 <h1>FILAZUL</h1>
                 <div class="product-subtitle">Tequila Blanco</div>
                 <div class="product-tagline">
                     "Subtle, but sneaky complexity"
                 </div>
-                
+
                 <p class="product-description">
                     An agave-forward spirit handcrafted in Arandas, Jalisco. FILAZUL Blanco is true to the roots of the plant and the spirit of tequila, showcasing the pure expression of highland blue agave with distinctive pandan notes alongside classic agave character.
                 </p>
-                
+
                 <div class="product-specs">
                     <div class="spec">
                         <span class="spec-label">Type</span>
@@ -588,7 +543,7 @@
                         <span class="spec-value">100% Blue Weber</span>
                     </div>
                 </div>
-                
+
                 <div>
                     <a href="#" class="cta-button">Find FILAZUL</a>
                     <a href="#tasting" class="cta-button secondary">Tasting Notes</a>
@@ -604,45 +559,45 @@
             <p style="text-align: center; font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8;">
                 True to the roots of the plant and the spirit of tequila, FILAZUL Blanco delivers an authentic agave experience with distinctive complexity.
             </p>
-            
+
             <div class="tasting-notes-grid">
                 <div class="tasting-note">
                     <div class="note-icon">🌱</div>
                     <div class="note-title">Raw Agave</div>
                     <div class="note-description">Fresh, vegetal notes of pure blue agave. The foundation of our expression.</div>
                 </div>
-                
+
                 <div class="tasting-note">
                     <div class="note-icon">🔥</div>
                     <div class="note-title">Cooked Agave</div>
                     <div class="note-description">Earthy sweetness from traditional cooking methods. Rich and complex.</div>
                 </div>
-                
+
                 <div class="tasting-note">
                     <div class="note-icon">🌶️</div>
                     <div class="note-title">Black Pepper</div>
                     <div class="note-description">Subtle spice that adds depth and a gentle warmth on the finish.</div>
                 </div>
-                
+
                 <div class="tasting-note">
                     <div class="note-icon">🍃</div>
                     <div class="note-title">Pandan</div>
                     <div class="note-description">Distinctive aromatic notes. The sneaky complexity that sets FILAZUL apart.</div>
                 </div>
             </div>
-            
+
             <div style="max-width: 900px; margin: 4rem auto; padding: 2.5rem; background: white; border-left: 4px solid #d97832;">
-                <h3 style="font-size: 1.5rem; color: #1a4d6d; margin-bottom: 1rem; text-transform: uppercase;">Full Tasting Experience</h3>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem;">
+                <h3 style="font-size: 1.5rem; color: #1a4d6d; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700;">Full Tasting Experience</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem; font-weight: 400;">
                     <strong style="color: #1a4d6d;">Appearance:</strong> Crystal clear, brilliant
                 </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem; font-weight: 400;">
                     <strong style="color: #1a4d6d;">Nose:</strong> Raw and cooked agave lead with earthy sweetness, followed by distinctive pandan aromatics and a whisper of black pepper
                 </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1rem; font-weight: 400;">
                     <strong style="color: #1a4d6d;">Palate:</strong> Pure agave-forward character with natural highland sweetness. Layers of cooked agave and pandan create subtle, sneaky complexity. Black pepper adds gentle spice.
                 </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #444;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444; font-weight: 400;">
                     <strong style="color: #1a4d6d;">Finish:</strong> Smooth and clean with lingering agave essence, pandan aromatics, and a touch of pepper warmth
                 </p>
             </div>
@@ -653,20 +608,20 @@
     <section>
         <div class="container">
             <h2>How to Enjoy FILAZUL</h2>
-            
+
             <div class="enjoy-grid">
                 <div class="enjoy-card">
                     <div class="enjoy-icon">🥃</div>
                     <h3>Neat</h3>
                     <p>Sip slowly to appreciate the full complexity. The pandan notes and black pepper reveal themselves beautifully when enjoyed at room temperature or slightly chilled.</p>
                 </div>
-                
+
                 <div class="enjoy-card">
                     <div class="enjoy-icon">🧊</div>
                     <h3>On the Rocks</h3>
                     <p>A large ice cube opens up the aromatics while maintaining the agave-forward character. Perfect for a relaxed evening.</p>
                 </div>
-                
+
                 <div class="enjoy-card">
                     <div class="enjoy-icon">🍹</div>
                     <h3>In Cocktails</h3>
@@ -680,16 +635,16 @@
     <section class="cocktail-feature">
         <div class="container">
             <h2>Signature Cocktail: Pandan Suntan</h2>
-            
+
             <div class="cocktail-grid">
                 <div class="cocktail-image">
                     [Pandan Suntan<br>Cocktail Image]
                 </div>
-                
+
                 <div class="cocktail-recipe">
                     <h3>Pandan Suntan</h3>
                     <p>A tropical twist on the classic Tequila Sunrise that celebrates FILAZUL's distinctive pandan notes. Bright, refreshing, and showcasing the sneaky complexity of our Blanco.</p>
-                    
+
                     <div class="ingredients">
                         <h4>Ingredients</h4>
                         <ul>
@@ -701,7 +656,7 @@
                             <li>Orange slice and pandan leaf for garnish</li>
                         </ul>
                     </div>
-                    
+
                     <div class="instructions">
                         <h4>Instructions</h4>
                         <ol>
@@ -715,7 +670,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div style="text-align: center; margin-top: 3rem;">
                 <a href="#" class="cta-button" style="background: white; color: #1a4d6d;">More Cocktail Recipes</a>
             </div>
@@ -726,26 +681,26 @@
     <section class="production-story">
         <div class="container">
             <h2>The FILAZUL Difference</h2>
-            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8;">
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; font-weight: 400;">
                 Crafted in the highlands of Arandas with selective sourcing and artisanal methods
             </p>
-            
+
             <div class="production-grid">
                 <div class="production-card">
                     <h3>Highland Terroir</h3>
                     <p>Agave grown at elevation in Arandas develops higher sugar content. Deep limestone aquifers provide pristine water, creating ideal conditions for exceptional flavor development.</p>
                 </div>
-                
+
                 <div class="production-card">
                     <h3>Selective Sourcing</h3>
                     <p>We choose agave plants based on sugar content and flavor characteristics. Only the finest highland plants make it into FILAZUL, ensuring consistency and complexity in every batch.</p>
                 </div>
-                
+
                 <div class="production-card">
                     <h3>Artisanal Craft</h3>
                     <p>Produced at an award-winning, multi-generation distillery (NOM 1414) in Arandas. Traditional methods combined with modern precision create our distinctive expression.</p>
                 </div>
-                
+
                 <div class="production-card">
                     <h3>Flavor First</h3>
                     <p>Every decision is guided by taste. From agave selection to distillation, we focus on creating an agave-forward spirit with the subtle, sneaky complexity that defines FILAZUL.</p>
@@ -758,7 +713,7 @@
     <section class="bg-light">
         <div class="container" style="text-align: center;">
             <h2>Experience FILAZUL</h2>
-            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; color: #555;">
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8; color: #555; font-weight: 400;">
                 True to the roots of the plant and the spirit of tequila. From our family to yours.
             </p>
             <a href="#" class="cta-button">Find FILAZUL Near You</a>
@@ -769,25 +724,19 @@
     <!-- Footer -->
     <footer>
         <a href="index.html" class="logo-placeholder" style="margin: 0 auto 2rem; display: flex; width: 200px; height: 66px;">
-            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 100%; height: 100%; object-fit: contain;" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
-                <div class="logo-text-small">TEQUILA</div>
-                <div class="logo-text-large" style="font-size: 2rem;">FILAZUL</div>
-            </div>
+            <img src="filazul-logo.png" alt="FILAZUL Tequila" style="width: 100%; height: 100%; object-fit: contain;">
         </a>
-        
         <div class="footer-nav">
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
             <a href="tequila-blanco.html">Our Tequila</a>
             <a href="where-to-buy.html">Where to Buy</a>
         </div>
-        
         <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
-        
         <div class="legal">
             <p>DRINK RESPONSIBLY. Must be 21+ to purchase.</p>
             <p style="margin-top: 1rem;">© 2026 FILAZUL Tequila. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><a href="#" style="color: #888; text-decoration: none;">Terms & Conditions</a> | <a href="#" style="color: #888; text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
 </body>
