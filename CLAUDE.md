@@ -3,6 +3,10 @@
 ## Always Do First
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
 
+## End of Every Session
+- Update the **## Current Project State** section at the bottom of this file with: what was built/changed, any decisions made, current status, and what's next.
+- Also update the memory file at `/Users/jodycash/.claude/projects/-Library-WebServer-FZWEB/memory/project_filazul.md` with the same summary.
+
 ## Reference Images
 - If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
 - If no reference image: design from scratch with high craft (see guardrails below).
@@ -52,3 +56,15 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Current Project State
+_Updated each session._
+
+- **Site:** Filazul — single-page scroll experience at `index.html`
+- **Stack:** Vanilla HTML/CSS/JS, inline styles, Tailwind CDN
+- **Recent work (2026-04-28):** Authored `design.md` v1 — full design system documentation covering color tokens, typography, animation, scroll architecture, components, and copy voice
+- **design.md:** Now exists at project root — use it as the reference for all future design work
+- **Dev server:** `node serve.mjs` → `http://localhost:3000`
+- **Fonts in use:** `worker` (Adobe Fonts), `Barlow Condensed` (Google Fonts)
+- **Key colors:** `#0a0a0a` ink, `#f5f0e8` parchment, `#c9a96e` gold, `#d97832` terracotta
+- **Status:** Active development
