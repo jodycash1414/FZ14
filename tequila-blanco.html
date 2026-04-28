@@ -355,13 +355,15 @@
         .cocktail-image {
             width: 100%;
             height: 500px;
-            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+        .cocktail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .cocktail-recipe {
@@ -637,7 +639,7 @@
 
             <div class="cocktail-grid">
                 <div class="cocktail-image">
-                    [Pandan Suntan<br>Cocktail Image]
+                    <img src="assets/pandan.jpg" alt="Pandan Suntan cocktail">
                 </div>
 
                 <div class="cocktail-recipe">
