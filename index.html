@@ -802,7 +802,7 @@
 <!-- Scroll Experience -->
     <div id="fz-track" style="height:500vh;position:relative;">
       <div id="fz-sticky" style="position:sticky;top:0;height:100vh;overflow:hidden;background:#000;">
-        <video id="fz-vid" src="assets/videos/filazul-master.mp4" preload="auto" muted playsinline webkit-playsinline style="position:absolute;opacity:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+        <video id="fz-vid" src="assets/videos/filazul-master-low.mp4" preload="auto" muted playsinline webkit-playsinline style="position:absolute;opacity:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
         <canvas id="cv" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <img id="fila" src="assets/fila.png" style="position:absolute;top:36%;left:50%;transform:translateX(-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
         <div id="row" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.75rem,1.5vw,1.05rem);font-weight:300;color:#c9a96e;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:54%;left:50%;transform:translateX(-50%);width:clamp(220px,24vw,380px);text-align:center;opacity:0;pointer-events:none;line-height:1.7;">
@@ -1032,7 +1032,7 @@
     (function(){
     const cv  = document.getElementById('cv');
     const ctx = cv.getContext('2d');
-    const vid = document.getElementById('fz-vid');
+    let   vid = document.getElementById('fz-vid');
     const trk = document.getElementById('fz-track');
 
     let W, H;
@@ -1053,6 +1053,7 @@
       if (unlocked) return;
       unlocked = true;
       vid.play().then(() => vid.pause()).catch(() => {});
+      hqVid.play().then(() => hqVid.pause()).catch(() => {});
     }
     window.addEventListener('touchstart', unlockVideo, {once: true, passive: true});
     window.addEventListener('scroll',     unlockVideo, {once: true, passive: true});
@@ -1085,10 +1086,37 @@
       hasFrame = true;
     }
 
-    vid.addEventListener('seeked', () => {
+    function onSeeked() {
       drawFrame();
       seeking = false;
       if(nextSeek !== null){ vid.currentTime = nextSeek; nextSeek = null; seeking = true; }
+    }
+    vid.addEventListener('seeked', onSeeked);
+
+    // HQ video — preloads silently, swaps in when ready
+    const hqVid = document.createElement('video');
+    hqVid.src = 'assets/videos/filazul-master.mp4';
+    hqVid.muted = true;
+    hqVid.setAttribute('playsinline', '');
+    hqVid.setAttribute('webkit-playsinline', '');
+    hqVid.preload = 'auto';
+    hqVid.style.cssText = 'position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;';
+    document.getElementById('fz-sticky').appendChild(hqVid);
+
+    hqVid.addEventListener('canplaythrough', function doSwap() {
+      hqVid.removeEventListener('canplaythrough', doSwap);
+      // Seek HQ to current position, then swap on its seeked event
+      const t = vid.currentTime;
+      hqVid.currentTime = t;
+      hqVid.addEventListener('seeked', function onHQSeeked() {
+        hqVid.removeEventListener('seeked', onHQSeeked);
+        vid.removeEventListener('seeked', onSeeked);
+        vid = hqVid;
+        vid.addEventListener('seeked', onSeeked);
+        seeking = false;
+        nextSeek = null;
+        drawFrame();
+      });
     });
 
     (function loop(){
