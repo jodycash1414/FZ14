@@ -756,6 +756,139 @@
     </style>
 </head>
 <body>
+
+    <!-- Age Gate -->
+    <div id="age-gate" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;transition:opacity 0.6s ease;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%, rgba(201,169,110,0.10) 0%, transparent 65%);pointer-events:none;"></div>
+
+      <!-- Logo -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="width:clamp(160px,28vw,300px);margin-bottom:2.5rem;" role="img" aria-label="FILAZUL">
+        <defs>
+          <filter id="ag-logo-filter" color-interpolation-filters="sRGB">
+            <feColorMatrix type="luminanceToAlpha" result="lum"/>
+            <feComponentTransfer in="lum" result="sharp">
+              <feFuncA type="gamma" amplitude="2" exponent="3" offset="-0.5"/>
+            </feComponentTransfer>
+            <feFlood flood-color="#f5f0e8" result="fill"/>
+            <feComposite in="fill" in2="sharp" operator="in"/>
+          </filter>
+        </defs>
+        <image href="filazul-logo.png" x="0" y="0" width="800" height="200" preserveAspectRatio="xMidYMid meet" filter="url(#ag-logo-filter)"/>
+      </svg>
+
+      <!-- Rule -->
+      <div style="width:clamp(120px,20vw,200px);height:1px;background:rgba(201,169,110,0.35);margin-bottom:2rem;"></div>
+
+      <!-- Headline -->
+      <p style="font-family:'worker',sans-serif;color:#f5f0e8;font-size:clamp(0.7rem,1.2vw,0.9rem);letter-spacing:0.25em;text-transform:uppercase;text-align:center;margin-bottom:0.6rem;">Welcome</p>
+      <p id="ag-requirement" style="font-family:'worker',sans-serif;color:rgba(201,169,110,0.75);font-size:clamp(0.75rem,1.1vw,0.88rem);letter-spacing:0.12em;text-align:center;margin-bottom:2.2rem;">You must be 21 years of age or older to enter.</p>
+
+      <!-- Date selects -->
+      <p style="font-family:'worker',sans-serif;color:rgba(245,240,232,0.5);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.9rem;">Date of birth</p>
+      <div style="display:flex;gap:0.75rem;margin-bottom:1.8rem;flex-wrap:wrap;justify-content:center;">
+        <select id="ag-month" style="font-family:'worker',sans-serif;background:#111;color:#f5f0e8;border:1px solid rgba(201,169,110,0.35);border-radius:4px;padding:0.75rem 1rem;font-size:0.9rem;letter-spacing:0.05em;cursor:pointer;appearance:none;min-width:130px;text-align:center;">
+          <option value="">Month</option>
+          <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+          <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+          <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+          <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+        </select>
+        <select id="ag-day" style="font-family:'worker',sans-serif;background:#111;color:#f5f0e8;border:1px solid rgba(201,169,110,0.35);border-radius:4px;padding:0.75rem 1rem;font-size:0.9rem;letter-spacing:0.05em;cursor:pointer;appearance:none;min-width:85px;text-align:center;">
+          <option value="">Day</option>
+        </select>
+        <select id="ag-year" style="font-family:'worker',sans-serif;background:#111;color:#f5f0e8;border:1px solid rgba(201,169,110,0.35);border-radius:4px;padding:0.75rem 1rem;font-size:0.9rem;letter-spacing:0.05em;cursor:pointer;appearance:none;min-width:100px;text-align:center;">
+          <option value="">Year</option>
+        </select>
+      </div>
+
+      <!-- Enter button -->
+      <button id="ag-enter" style="font-family:'worker',sans-serif;background:linear-gradient(135deg,#d97832,#f4a460);color:white;border:none;border-radius:50px;padding:1rem 3.5rem;font-size:0.9rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:transform 0.2s ease,box-shadow 0.2s ease;margin-bottom:1rem;">Enter</button>
+
+      <!-- Error -->
+      <p id="ag-error" style="font-family:'worker',sans-serif;color:#d97832;font-size:0.8rem;letter-spacing:0.1em;text-align:center;min-height:1.2em;margin-bottom:1.2rem;"></p>
+
+      <!-- Legal -->
+      <p style="font-family:'worker',sans-serif;color:rgba(201,169,110,0.4);font-size:0.7rem;letter-spacing:0.08em;text-align:center;max-width:360px;line-height:1.7;margin-bottom:0.5rem;">By entering this site you confirm you are of legal drinking age in your country and agree to our <a href="#" style="color:rgba(201,169,110,0.6);text-decoration:none;">Terms of Use</a> and <a href="#" style="color:rgba(201,169,110,0.6);text-decoration:none;">Privacy Policy</a>.</p>
+      <p style="font-family:'worker',sans-serif;color:rgba(201,169,110,0.3);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;">Please enjoy responsibly.</p>
+    </div>
+
+    <script>
+    (function(){
+      // Skip gate if already verified this session
+      if (sessionStorage.getItem('fz_verified')) {
+        document.getElementById('age-gate').style.display = 'none';
+        return;
+      }
+
+      document.body.style.overflow = 'hidden';
+
+      let threshold = 21;
+
+      // Populate day select
+      const dayEl = document.getElementById('ag-day');
+      for (let d = 1; d <= 31; d++) {
+        const o = document.createElement('option');
+        o.value = d; o.textContent = d;
+        dayEl.appendChild(o);
+      }
+
+      // Populate year select (newest first)
+      const yearEl = document.getElementById('ag-year');
+      const currentYear = new Date().getFullYear();
+      for (let y = currentYear; y >= currentYear - 110; y--) {
+        const o = document.createElement('option');
+        o.value = y; o.textContent = y;
+        yearEl.appendChild(o);
+      }
+
+      // Detect region and set threshold
+      fetch('https://ip-api.com/json/?fields=countryCode,regionCode')
+        .then(r => r.json())
+        .then(d => {
+          const country = d.countryCode || '';
+          const region  = d.regionCode  || '';
+          if      (country === 'US')                          threshold = 21;
+          else if (country === 'CA' && region === 'QC')       threshold = 18;
+          else if (country === 'CA')                          threshold = 19;
+          else if (['GB','MX','DE','FR','ES','IT','AU','NZ'].includes(country)) threshold = 18;
+          else                                                threshold = 21;
+          document.getElementById('ag-requirement').textContent =
+            'You must be ' + threshold + ' years of age or older to enter.';
+        })
+        .catch(() => {}); // keep threshold = 21 on failure
+
+      // Enter button hover
+      const btn = document.getElementById('ag-enter');
+      btn.addEventListener('mouseover', () => { btn.style.transform='translateY(-2px)'; btn.style.boxShadow='0 10px 30px rgba(217,120,50,0.4)'; });
+      btn.addEventListener('mouseout',  () => { btn.style.transform='';               btn.style.boxShadow=''; });
+
+      btn.addEventListener('click', function(){
+        const m = parseInt(document.getElementById('ag-month').value);
+        const d = parseInt(document.getElementById('ag-day').value);
+        const y = parseInt(document.getElementById('ag-year').value);
+        const errEl = document.getElementById('ag-error');
+
+        if (!m || !d || !y) { errEl.textContent = 'Please select your full date of birth.'; return; }
+
+        const dob     = new Date(y, m - 1, d);
+        const today   = new Date();
+        const minDate = new Date(today.getFullYear() - threshold, today.getMonth(), today.getDate());
+
+        if (dob <= minDate) {
+          sessionStorage.setItem('fz_verified', '1');
+          const gate = document.getElementById('age-gate');
+          gate.style.opacity = '0';
+          gate.addEventListener('transitionend', () => {
+            gate.style.display = 'none';
+            document.body.style.overflow = '';
+          }, { once: true });
+        } else {
+          errEl.textContent = 'You must be ' + threshold + ' or older to enter this site.';
+        }
+      });
+    })();
+    </script>
+
     <!-- Navigation -->
     <nav id="mainNav">
         <a href="index.html" class="logo-placeholder" id="navLogo">
