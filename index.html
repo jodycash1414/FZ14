@@ -932,21 +932,58 @@
         yearEl.appendChild(o);
       }
 
-      // Detect region and set threshold
-      fetch('https://ip-api.com/json/?fields=countryCode,regionCode')
-        .then(r => r.json())
-        .then(d => {
-          const country = d.countryCode || '';
-          const region  = d.regionCode  || '';
-          if      (country === 'US')                          threshold = 21;
-          else if (country === 'CA' && region === 'QC')       threshold = 18;
-          else if (country === 'CA')                          threshold = 19;
-          else if (['GB','MX','DE','FR','ES','IT','AU','NZ'].includes(country)) threshold = 18;
-          else                                                threshold = 21;
-          document.getElementById('ag-requirement').textContent =
-            'You must be ' + threshold + ' years of age or older to enter.';
-        })
-        .catch(() => {}); // keep threshold = 21 on failure
+      // Detect region and set the legal drinking age for spirits.
+      // Unknown or failed lookups keep 21, the strictest common age.
+      const AGE_BY_COUNTRY = {
+        US: 21,
+        // Canada: provincial ages handled below (18 in AB, MB, QC; 19 elsewhere)
+        CA: 19,
+        MX: 18, PR: 18, BR: 18, AR: 18, CL: 18, CO: 18, PE: 18, CR: 18, PA: 18, DO: 18,
+        // Europe (minimum age to buy spirits)
+        GB: 18, IE: 18, FR: 18, DE: 18, ES: 18, IT: 18, PT: 18, NL: 18, BE: 18, LU: 18,
+        AT: 18, CH: 18, DK: 18, PL: 18, CZ: 18, SK: 18, HU: 18, SI: 18, HR: 18, RO: 18,
+        BG: 18, GR: 18, CY: 18, MT: 18, EE: 18, LV: 18, MC: 18, AD: 18, LI: 18,
+        SE: 20, NO: 20, FI: 20, IS: 20, LT: 20,
+        // Asia-Pacific
+        AU: 18, NZ: 18, JP: 20, KR: 19, TH: 20, SG: 18, PH: 18
+      };
+      const CA_18 = ['AB', 'MB', 'QC', 'ALBERTA', 'MANITOBA', 'QUEBEC', 'QUÉBEC'];
+      const TZ_FALLBACK = tz =>
+        tz.startsWith('Europe/') ? 18 :
+        /^America\/(Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Mazatlan|Hermosillo|Tijuana|Bahia_Banderas)$/.test(tz) ? 18 :
+        /^America\/(Edmonton|Winnipeg)$/.test(tz) ? 18 :                                   // Alberta, Manitoba
+        (tz === 'America/Toronto' && /^fr/i.test(navigator.language || '')) ? 18 :            // French browser: Quebec
+        /^America\/(Toronto|Vancouver|Halifax|St_Johns|Regina|Moncton|Whitehorse|Yellowknife|Iqaluit)$/.test(tz) ? 19 :
+        /^Australia\/|^Pacific\/Auckland$/.test(tz) ? 18 : null;
+
+      function setThreshold(age) {
+        threshold = age;
+        document.getElementById('ag-requirement').textContent =
+          'You must be ' + threshold + ' years of age or older to enter.';
+      }
+      function ageFor(country, region) {
+        country = (country || '').toUpperCase();
+        region  = (region  || '').toUpperCase();
+        if (country === 'CA') return CA_18.includes(region) ? 18 : 19;
+        return AGE_BY_COUNTRY[country] || 21;
+      }
+      function tzGuess() {
+        let tz = '';
+        try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+        const age = TZ_FALLBACK(tz);
+        if (age) setThreshold(age);
+      }
+      const getJSON = (url, ms) => {
+        const ctl = new AbortController();
+        const t = setTimeout(() => ctl.abort(), ms);
+        return fetch(url, { signal: ctl.signal }).then(r => { clearTimeout(t); if (!r.ok) throw r.status; return r.json(); });
+      };
+      // 1) GeoJS (country + province/state)  2) country.is (country only)  3) browser time zone
+      getJSON('https://get.geojs.io/v1/ip/geo.json', 3000)
+        .then(d => setThreshold(ageFor(d.country_code, d.region)))
+        .catch(() => getJSON('https://api.country.is/', 3000)
+          .then(d => { if (d.country === 'CA') tzGuess(); else setThreshold(ageFor(d.country)); })
+          .catch(tzGuess));
 
       // Enter button hover
       const btn = document.getElementById('ag-enter');
