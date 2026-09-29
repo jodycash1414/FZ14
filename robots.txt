@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /where-to-buy.html
+Disallow: /product-page.html
+Disallow: /filazul_scroll_experience.html
+
+Sitemap: https://filazul.com/sitemap.xml

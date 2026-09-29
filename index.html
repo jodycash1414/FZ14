@@ -5,7 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Analytics 4 + Consent Mode -->
     <script src="assets/js/analytics.js"></script>
-    <title>FILAZUL Tequila - From Our Family to Yours</title>
+    <title>FILAZUL Tequila Blanco | Highland Tequila from Arandas, Jalisco</title>
+    <meta name="description" content="Agave-forward Tequila Blanco handcrafted at NOM 1414 in Arandas, Jalisco, with master distiller Sergio Cruz and master profiler Grisel Vargas.">
+    <link rel="canonical" href="https://filazul.com/">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#45686e">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FILAZUL Tequila">
+    <meta property="og:title" content="FILAZUL Tequila Blanco | Highland Tequila from Arandas, Jalisco">
+    <meta property="og:description" content="Agave-forward Tequila Blanco handcrafted at NOM 1414 in Arandas, Jalisco, with master distiller Sergio Cruz and master profiler Grisel Vargas.">
+    <meta property="og:url" content="https://filazul.com/">
+    <meta property="og:image" content="https://filazul.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Two FILAZUL hats on harvested agave piñas outside the hornos at NOM 1414">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FILAZUL Tequila Blanco | Highland Tequila from Arandas, Jalisco">
+    <meta name="twitter:description" content="Agave-forward Tequila Blanco handcrafted at NOM 1414 in Arandas, Jalisco, with master distiller Sergio Cruz and master profiler Grisel Vargas.">
+    <meta name="twitter:image" content="https://filazul.com/assets/og-image.jpg">
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://filazul.com/#organization",
+          "name": "FILAZUL Tequila",
+          "url": "https://filazul.com/",
+          "logo": "https://filazul.com/filazul-logo.png",
+          "description": "Agave-forward Tequila Blanco handcrafted in the highlands of Arandas, Jalisco, at NOM 1414.",
+          "sameAs": [
+            "https://www.instagram.com/tequilafilazul/"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Arandas",
+            "addressRegion": "Jalisco",
+            "addressCountry": "MX"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://filazul.com/#website",
+          "url": "https://filazul.com/",
+          "name": "FILAZUL Tequila",
+          "publisher": {
+            "@id": "https://filazul.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,300&display=swap" rel="stylesheet">
@@ -778,6 +831,16 @@
         .makers .maker-name { display: block; font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f5f0e8; }
         .makers .maker-role { display: block; margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; }
         @media (max-width: 768px) { .makers { grid-template-columns: 1fr; gap: 1.25rem; } }
+    
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+    
+        .fz-ig { display: inline-flex; align-items: center; gap: 0.5rem; color: #f5f0e8; text-decoration: none; letter-spacing: 1px; font-size: 0.9rem; opacity: 0.85; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .fz-ig:hover { opacity: 1; transform: translateY(-2px); }
+        .fz-ig:active { transform: translateY(0); }
+        .fz-ig:focus-visible { outline: 2px solid #c9a96e; outline-offset: 4px; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -935,6 +998,7 @@
     <section class="hero" id="hero">
         <div class="hero-background" id="heroBackground"></div>
         <div class="hero-content">
+            <h1 class="sr-only">FILAZUL Tequila Blanco: highland tequila from Arandas, Jalisco</h1>
             <svg class="hero-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-label="FILAZUL Tequila">
               <defs>
                 <filter id="logo-bg-remove" color-interpolation-filters="sRGB">
@@ -969,7 +1033,7 @@
         <canvas id="cv" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <!-- Grisel Vargas signature — bottom centre, fades in as the scroll hint fades out -->
         <img id="fz-sig" src="assets/grisel-signature.png" alt="Signed by Grisel Vargas, Master Profiler" width="1400" height="506" style="position:absolute;bottom:calc(4vh - 25px);left:50%;width:clamp(136px,24vh,272px);height:auto;transform:translateX(-50%);opacity:0;pointer-events:none;z-index:5;">
-        <img id="fila" src="assets/fila.png" style="position:absolute;top:36%;left:50%;transform:translateX(-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
+        <img id="fila" alt="FILA" src="assets/fila.png" style="position:absolute;top:36%;left:50%;transform:translateX(-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
         <div id="row" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.75rem,1.5vw,1.05rem);font-weight:300;color:#c9a96e;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:54%;left:50%;transform:translateX(-50%);width:clamp(220px,24vw,380px);text-align:center;opacity:0;pointer-events:none;line-height:1.7;">
           <div><span style="font-weight:400;color:#f5f0e8;letter-spacing:0.2em;">fi · la</span><span style="opacity:0.6;letter-spacing:0.08em;font-style:italic;">  /ˈfi.la/  </span><span style="opacity:0.6;letter-spacing:0.15em;">n. Spanish · Español</span></div>
           <div style="width:100%;height:1px;background:rgba(201,169,110,0.3);margin:0.4em auto;"></div>
@@ -977,7 +1041,7 @@
           <div style="margin-top:0.3em;"><span style="opacity:0.5;">1.&nbsp;</span><span style="color:#f5f0e8;">row, or line</span></div>
           <div style="opacity:0.55;font-style:italic;font-size:0.88em;">rows of crops, rows of agave, rows of sweetness extending to the horizon</div>
         </div>
-        <img id="azul" src="assets/azul.png" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
+        <img id="azul" alt="AZUL" src="assets/azul.png" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
         <div id="blue" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.75rem,1.5vw,1.05rem);font-weight:300;color:#c9a96e;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:62%;left:50%;transform:translateX(-50%);width:clamp(220px,24vw,380px);text-align:center;opacity:0;pointer-events:none;line-height:1.7;">
           <div><span style="font-weight:400;color:#f5f0e8;letter-spacing:0.2em;">a · zul</span><span style="opacity:0.6;letter-spacing:0.08em;font-style:italic;">  /aˈsul/  </span><span style="opacity:0.6;letter-spacing:0.15em;">adj. Spanish · Español</span></div>
           <div style="width:100%;height:1px;background:rgba(201,169,110,0.3);margin:0.4em auto;"></div>
@@ -985,7 +1049,7 @@
           <div style="margin-top:0.3em;"><span style="opacity:0.5;">1.&nbsp;</span><span style="color:#f5f0e8;">blue</span></div>
           <div style="opacity:0.55;font-style:italic;font-size:0.88em;">highland skies, blue Weber agave, the blue at the heart of every sip</div>
         </div>
-        <img id="logo" src="assets/filazul-text.png" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(280px,52vw,780px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
+        <img id="logo" alt="FILAZUL" src="assets/filazul-text.png" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(280px,52vw,780px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
         <div id="tag" style="position:absolute;top:58%;left:50%;transform:translateX(-50%);text-align:center;opacity:0;pointer-events:none;">
           <svg viewBox="0 0 200 170" fill="none" stroke="#c9a96e" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 0.4em;width:clamp(80px,12vw,150px);opacity:0.30;">
             <!-- Head (facing left) -->
@@ -1414,9 +1478,7 @@
         </div>
         
         <div class="social-links">
-            <div class="social-icon">📷</div>
-            <div class="social-icon">📘</div>
-            <div class="social-icon">🐦</div>
+            <a href="https://www.instagram.com/tequilafilazul/" class="fz-ig" target="_blank" rel="noopener" aria-label="FILAZUL on Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg><span>@tequilafilazul</span></a>
         </div>
         
         <p style="margin: 2rem 0;">Handcrafted in Arandas, Jalisco, Mexico | NOM 1414</p>
