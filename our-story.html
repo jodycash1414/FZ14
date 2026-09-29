@@ -26,7 +26,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: #45686e;
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             display: flex;
@@ -77,7 +77,7 @@
         /* Page Hero */
         .page-hero {
             padding: 10rem 5% 6rem;
-            background: radial-gradient(ellipse at 50% 0%, rgba(26,77,109,0.5) 0%, transparent 70%), #0a0a0a;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.18) 0%, transparent 70%), linear-gradient(180deg, #45686e 0%, #2f4b50 100%);
             color: white;
             text-align: center;
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -358,7 +358,7 @@
         }
 
         .bg-dark {
-            background: #2c2c2c;
+            background: #2f4b50;
             color: white;
         }
 
@@ -370,6 +370,10 @@
         .bg-dark p {
             color: #ddd;
             font-weight: 400;
+        }
+
+        .bg-dark .timeline-content p {
+            color: #555;
         }
 
         /* CTA Button */
@@ -462,6 +466,20 @@
                 display: none;
             }
         }
+    
+        .makers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+            padding: 1.75rem 0;
+            border-top: 1px solid rgba(26, 77, 109, 0.2);
+            border-bottom: 1px solid rgba(26, 77, 109, 0.2);
+            text-align: center;
+        }
+        .makers .maker-name { display: block; font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #1a4d6d; }
+        .makers .maker-role { display: block; margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d97832; }
+        @media (max-width: 768px) { .makers { grid-template-columns: 1fr; gap: 1.25rem; } }
     </style>
 </head>
 <body>
@@ -493,13 +511,13 @@
                 <h2>The Beginning</h2>
                 <p>From our family and friends along the North American coast, bonding over a shared love for highland tequila, we come together to celebrate this fine agave-forward spirit.</p>
 
-                <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of a multi-generation distillery located in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
+                <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of NOM 1414, the Vivanco family's multi-generation distillery in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
 
-                <div class="highlight">
-                    "As all great spirits do."
+                <div class="makers">
+                    <div><span class="maker-name">Sergio Vivanco</span><span class="maker-role">NOM 1414 · Vivanco Family</span></div>
+                    <div><span class="maker-name">Sergio Cruz</span><span class="maker-role">Master Distiller</span></div>
+                    <div><span class="maker-name">Grisel Vargas</span><span class="maker-role">Master Profiler</span></div>
                 </div>
-
-                <p>From our family to yours, enjoy!</p>
             </div>
 
             <div class="two-column">
@@ -539,7 +557,7 @@
                 <div>
                     <h2>Why Arandas</h2>
                     <p>Arandas sits at the heart of Los Altos, renowned worldwide for producing some of Mexico's finest tequila. The elevation, climate, and limestone-rich soil create ideal conditions for growing exceptional blue agave.</p>
-                    <p>Our partnership with a multi-generation distillery in Arandas allows us to work with master craftsmen who have dedicated their lives to perfecting their art. Their award-winning expertise, combined with our selective standards, ensures every bottle of FILAZUL meets our vision of what highland tequila should be.</p>
+                    <p>Our partnership with NOM 1414 and the Vivanco family allows us to work with master craftsmen who have dedicated their lives to perfecting their art, alongside master distiller Sergio Cruz and master profiler Grisel Vargas. Their award-winning expertise, combined with our selective standards, ensures every bottle of FILAZUL meets our vision of what highland tequila should be.</p>
                 </div>
             </div>
         </div>
@@ -584,7 +602,7 @@
         <div class="container">
             <div class="story-section" style="margin-bottom: 0;">
                 <h2>NOM 1414 &amp; the Vivanco Family</h2>
-                <p>FILAZUL is made at NOM 1414, Destilería El Ranchito, in the highlands of Arandas. The Vivanco family has grown agave on this land for five generations, and in 1994 Feliciano Vivanco and his five sons built a distillery of their own. Today the family still runs it, led by the next generation of Vivancos.</p>
+                <p>FILAZUL is made at NOM 1414, Destilería El Ranchito, in the highlands of Arandas. The Vivanco family has grown agave on this land for five generations, and in 1994 Feliciano Vivanco and his five sons built a distillery of their own. Today the family still runs it, with co-owner Sergio Vivanco among the next generation carrying the tradition forward.</p>
 
                 <p>Every agave that goes into NOM 1414 tequila is estate grown with organic practices across the family's small ranchos, and only mature piñas are harvested. From there it is slow-roasted in brick ovens, gently milled, fermented in open-air tanks to the sound of classical music, and distilled twice in copper pot stills. The well water at El Ranchito ties it all together.</p>
             </div>

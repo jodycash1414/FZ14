@@ -31,7 +31,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(69, 104, 110, 0.97); /* FILAZUL logo teal #45686e */
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             display: flex;
@@ -42,7 +42,7 @@
         }
         
         nav.scrolled {
-            background: rgba(0, 0, 0, 0.95);
+            background: #45686e;
             padding: 1rem 5%;
         }
         
@@ -139,8 +139,9 @@
             left: 0;
             width: 100%;
             height: 120%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                        linear-gradient(135deg, #1a4d6d 0%, #5a7ba6 30%, #f4a460 60%, #d97832 100%);
+            background: radial-gradient(ellipse 70% 60% at 90% 100%, rgba(217,120,50,0.7) 0%, rgba(217,120,50,0.22) 45%, transparent 75%),
+                        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(201,169,110,0.22) 0%, transparent 70%),
+                        linear-gradient(160deg, #2f4b50 0%, #45686e 55%, #3a5a60 100%);
             background-size: cover;
             background-position: center;
             transform: translateY(0);
@@ -272,7 +273,7 @@
         .story-section {
             min-height: 100vh;
             padding: 8rem 5%;
-            background: #0a0a0a;
+            background: linear-gradient(180deg, #2f4b50 0%, #223a3e 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -537,7 +538,7 @@
         /* CTA Section with Reveal */
         .cta-section {
             min-height: 60vh;
-            background: #0a0a0a;
+            background: #45686e;
             color: white;
             display: flex;
             align-items: center;
@@ -761,6 +762,20 @@
         @media (max-width: 640px) {
             #fz-sig { width: 130px !important; bottom: 3.5vh !important; }
         }
+    
+        .makers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+            padding: 1.75rem 0;
+            border-top: 1px solid rgba(201, 169, 110, 0.3);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+            text-align: center;
+        }
+        .makers .maker-name { display: block; font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f5f0e8; }
+        .makers .maker-role { display: block; margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; }
+        @media (max-width: 768px) { .makers { grid-template-columns: 1fr; gap: 1.25rem; } }
     </style>
 </head>
 <body>
@@ -1291,9 +1306,12 @@
         <div class="story-content">
             <h2>Our Story</h2>
             <p>From our family and friends along the North American coast, bonding over a shared love for highland tequila, we come together to celebrate this fine agave-forward spirit.</p>
-            <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of a multi-generation distillery located in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
-            <span class="highlight">As all great spirits do.</span>
-            <p style="margin-top: 2rem; font-size: 1.2rem;">From our family to yours, enjoy!</p>
+            <p>Bringing into existence an artisanal brand that puts flavor first. Coming from within the walls of NOM 1414, the Vivanco family's multi-generation distillery in Arandas, Jalisco, we are proud to serve you our pure and earthy tequila that hits you with a subtle, but sneaky complexity.</p>
+            <div class="makers">
+                <div><span class="maker-name">Sergio Vivanco</span><span class="maker-role">NOM 1414 · Vivanco Family</span></div>
+                <div><span class="maker-name">Sergio Cruz</span><span class="maker-role">Master Distiller</span></div>
+                <div><span class="maker-name">Grisel Vargas</span><span class="maker-role">Master Profiler</span></div>
+            </div>
             <a href="our-story.html" class="cta-button" style="margin-top: 3rem;"><span>Read Our Full Story</span></a>
         </div>
     </section>
@@ -1357,7 +1375,7 @@
             <div class="pillar">
                 <div class="pillar-icon">✨</div>
                 <h4>Selective Sourcing</h4>
-                <p>Award-winning distillery allows us to choose only the finest agave plants</p>
+                <p>NOM 1414, the Vivanco family's estate distillery, lets us choose only the finest agave plants</p>
             </div>
         </div>
     </section>
