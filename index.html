@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics 4 + Consent Mode -->
+    <script src="assets/js/analytics.js"></script>
     <title>FILAZUL Tequila - From Our Family to Yours</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -902,6 +904,7 @@
 
         if (dob <= minDate) {
           sessionStorage.setItem('fz_verified', '1');
+          FZ.track('age_gate_pass', { age_threshold: threshold });
           const gate = document.getElementById('age-gate');
           gate.style.opacity = '0';
           gate.addEventListener('transitionend', () => {
@@ -910,6 +913,7 @@
           }, { once: true });
         } else {
           errEl.textContent = 'You must be ' + threshold + ' or older to enter this site.';
+          FZ.track('age_gate_fail', { age_threshold: threshold });
         }
       });
     })();
@@ -1225,6 +1229,7 @@
       target = clamp(-trk.getBoundingClientRect().top / scrollable, 0, 1);
     }, {passive:true});
 
+    const videoMilestones = new Set();
     function txt(p){
       const s=(id,v)=>{ document.getElementById(id).style.opacity=clamp(v,0,1); };
       s('fila', map(p,0.17,0.24,0,1)*(1-map(p,0.36,0.43,0,1)));
@@ -1235,6 +1240,9 @@
       s('tag',  map(p,0.73,0.78,0,1)*(1-map(p,0.84,0.91,0,1)));
       s('scroll-hint', map(p, 0, 0.07, 1, 0));
       s('fz-sig', 0.28 * map(p, 0.04, 0.10, 0, 1));
+      for (const m of [25, 50, 75, 100]) {
+        if (p * 100 >= m - 2 && !videoMilestones.has(m)) { videoMilestones.add(m); FZ.track('video_progress', { percent: m }); }
+      }
       document.getElementById('pb').style.width = (p*100)+'%';
     }
 
