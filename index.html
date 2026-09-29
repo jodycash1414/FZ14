@@ -760,7 +760,7 @@
         }
     
         @media (max-width: 640px) {
-            #fz-sig { width: 130px !important; bottom: 3.5vh !important; }
+            #fz-sig { width: 130px !important; bottom: calc(3.5vh - 25px) !important; }
         }
     
         .makers {
@@ -964,7 +964,7 @@
         <video id="fz-vid" src="assets/videos/filazul-master-low.mp4" preload="auto" muted playsinline webkit-playsinline style="position:absolute;opacity:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
         <canvas id="cv" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <!-- Grisel Vargas signature — bottom centre, fades in as the scroll hint fades out -->
-        <img id="fz-sig" src="assets/grisel-signature.png" alt="Signed by Grisel Vargas, Master Profiler" width="1400" height="506" style="position:absolute;bottom:4vh;left:50%;width:clamp(136px,24vh,272px);height:auto;transform:translateX(-50%);opacity:0;pointer-events:none;z-index:5;">
+        <img id="fz-sig" src="assets/grisel-signature.png" alt="Signed by Grisel Vargas, Master Profiler" width="1400" height="506" style="position:absolute;bottom:calc(4vh - 25px);left:50%;width:clamp(136px,24vh,272px);height:auto;transform:translateX(-50%);opacity:0;pointer-events:none;z-index:5;">
         <img id="fila" src="assets/fila.png" style="position:absolute;top:36%;left:50%;transform:translateX(-50%);width:clamp(200px,38vw,560px);height:auto;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 24px rgba(0,0,0,0.85));display:block;">
         <div id="row" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.75rem,1.5vw,1.05rem);font-weight:300;color:#c9a96e;text-shadow:0 2px 20px rgba(0,0,0,0.8);position:absolute;top:54%;left:50%;transform:translateX(-50%);width:clamp(220px,24vw,380px);text-align:center;opacity:0;pointer-events:none;line-height:1.7;">
           <div><span style="font-weight:400;color:#f5f0e8;letter-spacing:0.2em;">fi · la</span><span style="opacity:0.6;letter-spacing:0.08em;font-style:italic;">  /ˈfi.la/  </span><span style="opacity:0.6;letter-spacing:0.15em;">n. Spanish · Español</span></div>
