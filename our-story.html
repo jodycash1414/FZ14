@@ -203,6 +203,90 @@
             line-height: 1.7;
         }
 
+        /* People */
+        .distillery-facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0 4rem;
+        }
+
+        .distillery-fact {
+            text-align: center;
+            padding: 1.75rem 1rem;
+            background: white;
+            border-top: 3px solid #d97832;
+            border-radius: 5px;
+            box-shadow: 0 6px 24px rgba(26, 77, 109, 0.08), 0 1px 3px rgba(26, 77, 109, 0.06);
+        }
+
+        .distillery-fact .fact-value {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a4d6d;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .distillery-fact .fact-label {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #777;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .person-card {
+            padding: 2.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .person-photo {
+            display: block;
+            width: calc(100% + 5rem);
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            margin: -2.5rem -2.5rem 2rem;
+            max-width: none;
+        }
+
+        .person-card .person-role {
+            font-size: 0.85rem;
+            color: #d97832;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .person-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a4d6d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .person-card p {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #555;
+            line-height: 1.7;
+        }
+
         /* Timeline */
         .timeline {
             position: relative;
@@ -338,6 +422,18 @@
             }
 
             .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .distillery-facts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .distillery-fact .fact-value {
+                font-size: 1.8rem;
+            }
+
+            .people-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -478,6 +574,41 @@
                 <div class="value-card">
                     <h3>Artisanal Craft</h3>
                     <p>Multi-generational expertise meets modern precision. Small-batch production ensures quality control, while award-winning master distillers bring decades of knowledge to every batch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The People -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="story-section" style="margin-bottom: 0;">
+                <h2>NOM 1414 &amp; the Vivanco Family</h2>
+                <p>FILAZUL is made at NOM 1414, Destilería El Ranchito, in the highlands of Arandas. The Vivanco family has grown agave on this land for five generations, and in 1994 Feliciano Vivanco and his five sons built a distillery of their own. Today the family still runs it, led by the next generation of Vivancos.</p>
+
+                <p>Every agave that goes into NOM 1414 tequila is estate grown with organic practices across the family's small ranchos, and only mature piñas are harvested. From there it is slow-roasted in brick ovens, gently milled, fermented in open-air tanks to the sound of classical music, and distilled twice in copper pot stills. The well water at El Ranchito ties it all together.</p>
+            </div>
+
+            <div class="distillery-facts">
+                <div class="distillery-fact"><span class="fact-value">5</span><span class="fact-label">Generations of agave</span></div>
+                <div class="distillery-fact"><span class="fact-value">1994</span><span class="fact-label">Distillery founded</span></div>
+                <div class="distillery-fact"><span class="fact-value">16</span><span class="fact-label">Estate ranchos</span></div>
+                <div class="distillery-fact"><span class="fact-value">6,600 ft</span><span class="fact-label">Highland elevation</span></div>
+            </div>
+
+            <div class="people-grid">
+                <div class="person-card">
+                    <img class="person-photo" src="assets/sergio-cruz.jpg" alt="Sergio Cruz, Master Distiller, wearing a FILAZUL shirt at the distillery" loading="lazy" width="900" height="900">
+                    <p class="person-role">Master Distiller</p>
+                    <h3>Sergio Cruz</h3>
+                    <p>A chemist turned maestro tequilero, Sergio Cruz oversees every step of production at El Ranchito, from the slow roast in brick ovens to the final pass through copper. Regarded as one of the most acclaimed distillers of his generation, he brings a scientist's precision to a family tradition, and it shows in every batch of FILAZUL.</p>
+                </div>
+
+                <div class="person-card">
+                    <img class="person-photo" src="assets/grisel-vargas.jpg" alt="Grisel Vargas, Master Profiler, holding a case of FILAZUL at the distillery" loading="lazy" width="900" height="900">
+                    <p class="person-role">Master Profiler</p>
+                    <h3>Grisel Vargas</h3>
+                    <p>A Master Profiler of Spirits and sommelier with two decades in the tequila world, Grisel Vargas is the bridge between the distiller and the glass. She shaped FILAZUL's sensory identity, from aroma and texture to balance and finish, and serves as a judge at spirits and mixology competitions.</p>
                 </div>
             </div>
         </div>
