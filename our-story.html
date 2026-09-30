@@ -546,6 +546,7 @@
         .fz-ig:active { transform: translateY(0); }
         .fz-ig:focus-visible { outline: 2px solid #c9a96e; outline-offset: 4px; border-radius: 4px; }
     </style>
+    <style>/* Pre-launch: invisible Shop hotspot in the nav */ nav a.fz-shop-hidden { display: inline-block; width: 44px; height: 44px; margin: -12px 0; vertical-align: middle; } nav a.fz-shop-hidden::after { display: none; }</style>
 </head>
 <body>
     <script>if(!sessionStorage.getItem('fz_verified')){window.location.href='index.html';}</script>
@@ -557,7 +558,7 @@
         <ul>
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="tequila-blanco.html">Our Tequila</a></li>
-            <li><a href="shop.html">Shop</a></li>
+            <li><a href="shop.html" class="fz-shop-hidden" aria-label="Shop" tabindex="-1"></a></li><!-- PRE-LAUNCH: restore label "Shop" when the store opens -->
             <!-- ON HOLD: where-to-buy — <li><a href="where-to-buy.html">Where to Buy</a></li> -->
         </ul>
     </nav>
@@ -766,7 +767,7 @@
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
             <a href="tequila-blanco.html">Our Tequila</a>
-            <a href="shop.html">Shop</a>
+            <!-- PRE-LAUNCH: shop — <a href="shop.html">Shop</a> -->
             <!-- ON HOLD: where-to-buy — <a href="where-to-buy.html">Where to Buy</a> -->
         </div>
         <a href="https://www.instagram.com/tequilafilazul/" class="fz-ig" target="_blank" rel="noopener" aria-label="FILAZUL on Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg><span>@tequilafilazul</span></a>

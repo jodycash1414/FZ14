@@ -842,6 +842,7 @@
         .fz-ig:active { transform: translateY(0); }
         .fz-ig:focus-visible { outline: 2px solid #c9a96e; outline-offset: 4px; border-radius: 4px; }
     </style>
+    <style>/* Pre-launch: invisible Shop hotspot in the nav */ nav a.fz-shop-hidden { display: inline-block; width: 44px; height: 44px; margin: -12px 0; vertical-align: middle; } nav a.fz-shop-hidden::after { display: none; }</style>
 </head>
 <body>
 
@@ -1027,7 +1028,7 @@
         <ul>
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="tequila-blanco.html">Our Tequila</a></li>
-            <li><a href="shop.html">Shop</a></li>
+            <li><a href="shop.html" class="fz-shop-hidden" aria-label="Shop" tabindex="-1"></a></li><!-- PRE-LAUNCH: restore label "Shop" when the store opens -->
             <!-- ON HOLD: where-to-buy — <li><a href="where-to-buy.html">Where to Buy</a></li> -->
         </ul>
     </nav>
@@ -1512,7 +1513,7 @@
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
             <a href="tequila-blanco.html">Our Tequila</a>
-            <a href="shop.html">Shop</a>
+            <!-- PRE-LAUNCH: shop — <a href="shop.html">Shop</a> -->
             <!-- ON HOLD: where-to-buy — <a href="where-to-buy.html">Where to Buy</a> -->
         </div>
         
