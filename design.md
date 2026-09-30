@@ -85,7 +85,7 @@ The main experience lives in a `500vh` tall div (`#fz-track`). A `position: stic
 | `#fila` (wordmark crop) | 17–24% | 36–43% | Left half of logo |
 | `#blue` (azul sub) | 44–50% | 63–69% | Dictionary entry for *azul* |
 | `#azul` (wordmark crop) | 50–58% | 63–69% | Right half of logo |
-| `#tag` (provenance) | 73–78% | 84–91% | Eagle SVG + "hand-crafted in the highlands" |
+| `#tag` (provenance) | 73–78% | 84–91% | Eagle SVG + "hand-crafted in the Mexican Highlands" |
 | `#logo` (full wordmark) | 69–75% | 84–91% | Full logo |
 | `#scroll-hint` | 0% | 7% | Agave quiote + SCROLL arrow |
 
@@ -175,7 +175,7 @@ Secondary: `background: transparent`, `border: 2px solid white`. Hover: subtle w
 
 ## Voice (copy tone for UI text)
 
-- Lowercase preferred for sub-labels and metadata: `hand-crafted in the highlands`, `arandas, jalisco, mexico`
+- Lowercase preferred for sub-labels and metadata: `hand-crafted in the Mexican Highlands`, `arandas, jalisco, mexico`
 - All-caps for structural labels: `SCROLL`, `FILAZUL`, section headings
 - Dictionary-style definitions are the brand's signature voice — etymological, bilingual, understated
 - No exclamation points outside of "enjoy!" (which is intentional, familial)
