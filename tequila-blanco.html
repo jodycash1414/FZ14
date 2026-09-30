@@ -560,6 +560,46 @@
         .fz-ig:focus-visible { outline: 2px solid #c9a96e; outline-offset: 4px; border-radius: 4px; }
     </style>
     <style>/* Pre-launch: invisible Shop hotspot in the nav */ nav a.fz-shop-hidden { display: inline-block; width: 44px; height: 44px; margin: -12px 0; vertical-align: middle; } nav a.fz-shop-hidden::after { display: none; }</style>
+    <style>
+        /* Bottle spin — scroll-scrubbed video. The bottle column is a tall track whose
+           sticky stage holds the bottle in view while it turns; its extra height is the
+           scroll distance of the spin. */
+        .bottle-spin {
+            display: block;
+            width: min(500px, 100%, calc((100svh - 150px) * 5 / 7));
+            aspect-ratio: 5 / 7;
+            height: auto;
+            margin: 0 auto;
+            object-fit: cover;
+            background: #d9bea3 url('assets/bottle-spin-poster.jpg') center / cover no-repeat;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(69,104,110,0.12), 0 20px 60px rgba(0,0,0,0.25);
+        }
+        .product-hero { padding-top: 98px; }
+        .product-hero-grid { align-items: start; }
+        .product-image-main { height: 240vh; }
+        .bottle-spin-stage {
+            position: sticky;
+            top: 98px;
+            height: calc(100vh - 98px);
+            height: calc(100svh - 98px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (min-width: 769px) {
+            /* Text scrolls until its last line is in view, then holds beside the bottle */
+            .product-info { position: sticky; top: var(--fz-info-top, 122px); padding-top: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .product-image-main { height: 210vh; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .product-hero { padding-top: 120px; }
+            .product-image-main { height: auto; }
+            .bottle-spin-stage, .product-info { position: static; height: auto; }
+        }
+    </style>
 </head>
 <body>
     <script>if(!sessionStorage.getItem('fz_verified')){window.location.href='index.html';}</script>
@@ -577,10 +617,13 @@
     </nav>
 
     <!-- Product Hero -->
-    <section class="product-hero">
-        <div class="product-hero-grid">
-            <div class="product-image-main">
-                <img src="assets/bottle.jpg" alt="FILAZUL Tequila Blanco" style="width:100%;max-width:500px;height:700px;object-fit:cover;object-position:center;display:block;margin:0 auto;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <section class="product-hero" id="productHero">
+                <div class="product-hero-grid">
+            <div class="product-image-main" id="bottleTrack">
+                <!-- Scroll-scrubbed 360° bottle spin (assets/videos/bottle-spin*.mp4, every frame a keyframe) -->
+                <div class="bottle-spin-stage">
+                    <video id="bottleVid" class="bottle-spin" muted playsinline webkit-playsinline preload="auto" poster="assets/bottle-spin-poster.jpg" aria-label="FILAZUL Tequila Blanco bottle, turning as you scroll"></video>
+                </div>
             </div>
 
             <div class="product-info">
@@ -793,5 +836,58 @@
             <p style="margin-top: 0.5rem;"><a href="#" style="color: #888; text-decoration: none;">Terms & Conditions</a> | <a href="#" style="color: #888; text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
+    <script>
+    // Bottle spin: scroll position inside the pinned track drives video.currentTime
+    (function () {
+      const vid = document.getElementById('bottleVid');
+      if (!vid || matchMedia('(prefers-reduced-motion: reduce)').matches) return; // poster only
+      const track = document.getElementById('bottleTrack');
+      const stage = track.querySelector('.bottle-spin-stage');
+      const info = document.querySelector('.product-info');
+      const mobile = matchMedia('(max-width: 768px)');
+      vid.src = mobile.matches ? 'assets/videos/bottle-spin-low.mp4' : 'assets/videos/bottle-spin.mp4';
+
+      // iOS Safari needs a gesture before it will seek
+      let unlocked = false;
+      function unlock() { if (unlocked) return; unlocked = true; vid.play().then(() => vid.pause()).catch(() => {}); }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('scroll', unlock, { once: true, passive: true });
+
+      const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+      let target = 0, prog = 0, seeking = false, nextSeek = null;
+
+      function layout() {
+        // Pin the text once its bottom is on screen (or right under the nav if it fits)
+        info.style.setProperty('--fz-info-top', Math.min(98, window.innerHeight - info.offsetHeight - 24) + 'px');
+        measure();
+      }
+      function measure() {
+        const stickyTop = parseFloat(getComputedStyle(stage).top) || 0;
+        const range = track.offsetHeight - stage.offsetHeight;
+        target = range > 0 ? clamp((stickyTop - track.getBoundingClientRect().top) / range, 0, 1) : 0;
+      }
+      window.addEventListener('scroll', measure, { passive: true });
+      window.addEventListener('resize', layout);
+      layout();
+
+      vid.addEventListener('seeked', () => {
+        seeking = false;
+        if (nextSeek !== null) { vid.currentTime = nextSeek; nextSeek = null; seeking = true; }
+      });
+
+      (function loop() {
+        prog += (target - prog) * 0.12;
+        if (vid.readyState >= 2 && vid.duration) {
+          const t = Math.min(prog * vid.duration, vid.duration - 0.05);
+          if (!seeking) {
+            if (Math.abs(vid.currentTime - t) > 0.03) { vid.currentTime = t; seeking = true; }
+          } else {
+            nextSeek = t;
+          }
+        }
+        requestAnimationFrame(loop);
+      })();
+    })();
+    </script>
 </body>
 </html>
