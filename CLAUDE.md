@@ -56,6 +56,7 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+- Never use "highland" or "highlands" unqualified in copy, meta tags or alt text. It is a protected term for Scotch whisky. Always say "Mexican Highlands", e.g. "Tequila from the Mexican Highlands" or "Tequila from the Mexican Highlands of Arandas, Jalisco"
 
 ## Current Project State
 _Updated each session._
