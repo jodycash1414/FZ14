@@ -68,3 +68,4 @@ _Updated each session._
 - **Fonts in use:** `worker` (Adobe Fonts), `Barlow Condensed` (Google Fonts)
 - **Key colors:** `#0a0a0a` ink, `#f5f0e8` parchment, `#c9a96e` gold, `#d97832` terracotta
 - **Status:** Active development
+- **2026-09-30 — Shop:** Added `shop.html` splash (hats-hornos photo, "The FILAZUL Shop", SHOP MERCH button → `https://shop.filazul.com`, the planned Shopify subdomain). SHOP TEQUILA button is present but commented out (`ON HOLD: shop-tequila`). Shop link added to nav + footer on all pages, and to sitemap. Not committed or pushed yet; wait until the Shopify store is live and shop.filazul.com CNAME → shops.myshopify.com is set at GoDaddy.
