@@ -8,7 +8,7 @@ Cinematic. Unhurried. The page doesn't ask for attention — it earns it.
 
 The scroll experience is the brand. A near-black canvas, warm gold text appearing and dissolving, video scrubbing as the user moves through the page. No nav overlay, no hero banner, no "above the fold" thinking. The bottle reveal is the payoff at the end of a slow burn.
 
-References: Apple iPhone product pages (scroll mechanic), Clase Azul (premium brand language), highland Jalisco landscape photography (color world).
+References: Apple iPhone product pages (scroll mechanic), Clase Azul (premium brand language), Mexican Highlands (Jalisco) landscape photography (color world).
 
 ---
 
@@ -23,12 +23,12 @@ References: Apple iPhone product pages (scroll mechanic), Clase Azul (premium br
 | `--gold-rule` | `rgba(201,169,110,0.3)` | Hairline dividers |
 | `--terracotta` | `#d97832` | CTA buttons, nav underline, spec accents |
 | `--peach` | `#f4a460` | Gradient partner to terracotta |
-| `--highland-blue` | `#1a4d6d` | Product headings, image side background |
+| `--mexican-highlands-blue` | `#1a4d6d` | Product headings, image side background |
 | `--sky-blue` | `#5a7ba6` | Gradient fill, mid-tone |
 
 **The core contrast:** warm gold `#c9a96e` on near-black `#0a0a0a`. Everything else is a supporting player.
 
-Do not use cool greys, pure white, or any default Tailwind blue/indigo. The palette is warm, earthy, with a single cool note (highland blue) for the product context.
+Do not use cool greys, pure white, or any default Tailwind blue/indigo. The palette is warm, earthy, with a single cool note (Mexican Highlands blue) for the product context.
 
 ---
 
@@ -156,7 +156,7 @@ Secondary: `background: transparent`, `border: 2px solid white`. Hover: subtle w
 
 1. **Scroll experience** — 500vh, sticky canvas + text overlays. The entire brand argument.
 2. **Story** — `#0a0a0a`, warm gold gradient heading, prose. `::before` light sweep on reveal.
-3. **Product showcase** — Split grid. Left: highland blue gradient + bottle placeholder. Right: `#f9f9f9`, specs, CTA.
+3. **Product showcase** — Split grid. Left: Mexican Highlands blue gradient + bottle placeholder. Right: `#f9f9f9`, specs, CTA.
 4. **Brand pillars** — `linear-gradient(135deg, #1a4d6d → #2c5f7d)`, 4-column grid, staggered reveal.
 5. **CTA** — `#0a0a0a`, radial gold pulse animation, distribution call-to-action.
 6. **Footer** — `#0a0a0a`, logo, nav, social icons, legal.

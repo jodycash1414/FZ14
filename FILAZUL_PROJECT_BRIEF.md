@@ -15,7 +15,7 @@ This is modelled on the Apple product page scroll experience.
 
 - **Name:** FILAZUL
 - **Meaning:** FILA = row / line / file (Spanish). AZUL = blue (Spanish). A row of blue agave.
-- **Tagline concept:** Single vertical row of blue Weber agave against Jalisco highland soil
+- **Tagline concept:** Single vertical row of blue Weber agave against the soil of the Mexican Highlands of Jalisco
 - **Colour palette:**
   - Primary accent: `#c9a96e` (warm gold)
   - Background: near-black `#0a0a0a`
@@ -97,7 +97,7 @@ All text is a **CSS/GSAP overlay layer** — it is NOT baked into the video. Tex
 | `AZUL` | 50–58% | 63–69% | Cinzel | 12–14vw, weight 700, tracking 0.3em |
 | `blue · blue weber agave · tequila` | 53–59% | 63–69% | Cormorant Garamond | 1.8vw, italic, #c9a96e, low opacity |
 | `FILAZUL` (logo) | 69–75% | 84–91% | Cinzel | 8vw, weight 900, tracking 0.5em |
-| `jalisco highlands · méxico` | 73–78% | 84–91% | Cormorant Garamond | 1.5vw, italic, #c9a96e |
+| `mexican highlands · jalisco` | 73–78% | 84–91% | Cormorant Garamond | 1.5vw, italic, #c9a96e |
 
 **Notes:**
 - All text is centred horizontally and vertically
@@ -184,7 +184,7 @@ gsap.fromTo(".text-fila",
     <div class="text-layer text-azul">AZUL</div>
     <div class="text-layer text-azul-sub">blue · blue weber agave · tequila</div>
     <div class="text-layer text-logo">FILAZUL</div>
-    <div class="text-layer text-logo-sub">jalisco highlands · méxico</div>
+    <div class="text-layer text-logo-sub">mexican highlands · jalisco</div>
   </div>
 
   <!-- Scroll spacer — this is what the user actually scrolls -->
