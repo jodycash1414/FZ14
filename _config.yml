@@ -1,0 +1,9 @@
+# Internal notes stay in the repo for reference but are not published on filazul.com.
+exclude:
+  - CLAUDE.md
+  - FILAZUL_PROJECT_BRIEF.md
+  - SKILL.md
+  - design.md
+  - serve.mjs
+  - brand-strategy-framework/
+  - old_mac_memory/
